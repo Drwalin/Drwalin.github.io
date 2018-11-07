@@ -1,0 +1,25 @@
+
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cpp&amp;skin=sons-of-obsidian"></script>
+	
+	
+	
+	<body>
+		<?prettify linenums=1?>  <!-- This makes sure that code will start from 1st line -->
+		<pre class="prettyprint">
+void Buffer::ClearWorkingArea( const char sign, const uint8 frontColor, const uint8 backgroundColor )
+{
+	uint8 color = ( backgroundColor << uint8(4) ) + frontColor;
+	if( consoleBuffer )
+	{
+		for( uint32 x = workAreaMin.x; x < workAreaMax.x; ++x )
+		{
+			for( uint32 y = workAreaMin.y; y < workAreaMax.y; ++y )
+			{
+				consoleBuffer[ x + size.x*y ].asciiChar = sign;
+				consoleBuffer[ x + size.x*y ].attributes = color;
+			}
+		}
+	}
+}</pre>
+		
+	</body>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Drwalin's main page</title>
+	</head>
+	
+	<!-- <meta http-equiv="refresh" content="5" /> -->
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cpp&amp;skin=sons-of-obsidian"></script>
+	
+	<body>
+		<h1>Test code:<br /></h1>
+		<?prettify linenums=311?>
+		<pre class="prettyprint">
+void Buffer::ClearWorkingArea( const char sign, const uint8 frontColor, const uint8 backgroundColor )
+{
+	uint8 color = ( backgroundColor << uint8(4) ) + frontColor;
+	if( consoleBuffer )
+	{
+		for( uint32 x = workAreaMin.x; x < workAreaMax.x; ++x )
+		{
+			for( uint32 y = workAreaMin.y; y < workAreaMax.y; ++y )
+			{
+				consoleBuffer[ x + size.x*y ].asciiChar = sign;
+				consoleBuffer[ x + size.x*y ].attributes = color;
+			}
+		}
+	}
+	else
+	{
+		// TODO:
+		//	Error handling;
+	}
+}</pre>
+
+
+
+
+<pre class="prettyprint">int main( int argc, char **argv ) {	/*some code*/	return 0; }</pre>
+		
+	</body>
+	
+</html>

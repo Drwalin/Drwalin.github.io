@@ -1,0 +1,11 @@
+
+Refresh website every 311 seconds:
+	<meta http-equiv="refresh" content="311" />
+
+Code highliting:
+	-load code highlit script.js:
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cpp&amp;skin=sons-of-obsidian"></script>
+	-usage of code highlight:
+		<pre class="prettyprint">int main( int argc, char **argv ) {	/*some code*/	return 0; }</pre>
+	-start index nex block of code from 311th line:
+		<?prettify linenums=311?>
