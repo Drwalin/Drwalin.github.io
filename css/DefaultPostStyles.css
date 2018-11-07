@@ -69,36 +69,36 @@ body
 
 /*	Main body	*/
 
-.postMain
+.mainBody
 {
 	background-color: #bbbbbb;
 	padding: 10px;
 	min-height: 88vh;
 }
 
-.postMain table
+.mainBody table
 {
 	/*font-family: arial, sans-serif;*/
 	border-collapse: collapse;
     background-color: #ffffff;
-	width: 90%;
+	width: 100%;
 }
 
-.postMain table td
+.mainBody table td
 {
 	border: 1px solid #aaaaaa;
 	text-align: left;
 	padding: 8px;
 }
 
-.postMain table th
+.mainBody table th
 {
 	border: 1px solid #aaaaaa;
 	text-align: left;
 	padding: 8px;
 }
 
-.postMain table tr:nth-child(even)
+.mainBody table tr:nth-child(even)
 {
     background-color: #dddddd;
 }
