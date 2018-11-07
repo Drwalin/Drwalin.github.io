@@ -73,6 +73,7 @@ body
 {
 	background-color: #bbbbbb;
 	padding: 10px;
+	min-height: 88vh;
 }
 
 .postMain table
@@ -102,7 +103,19 @@ body
     background-color: #dddddd;
 }
 
+
+pre
+{
+	max-height: 70vh;
+	overflow: auto;
+}
+
+
+
 /*	End of main body	*/
+
+
+
 
 
 
