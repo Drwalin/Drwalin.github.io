@@ -23,7 +23,7 @@ function OnPostClickEvent( postData )
 	var file = postData.file;
 	file = "../posts/" + file;
 	*/
-	ReadFile( "../posts/" + postData.file, "readMainPost" );
+	//ReadFile( "../posts/" + postData.file, "readMainPost" );
 }
 
 function PostsTableComparisonFunction( a, b )
