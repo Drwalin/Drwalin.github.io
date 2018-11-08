@@ -18,6 +18,7 @@ function AddPost( name, date, description, file )
 
 function OnPostClickEvent( postData )
 {
+	alert( postData.name );
 	/*
 	var file = postData.file;
 	file = "../posts/" + file;
