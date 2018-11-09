@@ -6,24 +6,21 @@ var currentDate = new Date();
 // file - relative path from folder "posts"
 function AddPost( name, date, description, file )
 {
-	//if( date.year <= currentDate.getFullYear() && date.month <= currentDate.getMonth() && date.day <= currentDate.getDate() && date.hour <= currentDate.getHours() )
+	//if( date.year < currentDate.getFullYear() || ( date.year == currentDate.getFullYear() && ( date.month < currentDate.getMonth() || ( date.month == currentDate.getMonth() && ( date.day < currentDate.getDate() || ( date.day == currentDate.getDate() && ( date.hour <= currentDate.getHours() ) ) ) ) ) ) )
 	//{
 		allPosts.push( { name:name, date:date, description:description, file:file, event:"Null" } );
-	//}
-	//else
-	//{
-	//	alert( "\"Else\" while adding post" );
+		
+		allPosts[allPosts.length-1].event = function()
+		{
+			OnPostClickEvent( allPosts[allPosts.length-1] );
+		};
 	//}
 }
 
 function OnPostClickEvent( postData )
 {
-	alert( postData.name );
-	/*
-	var file = postData.file;
-	file = "../posts/" + file;
-	*/
-	//ReadFile( "../posts/" + postData.file, "readMainPost" );
+	ReadFile( "../posts/" + postData.file, "readMainPost" );
+	document.getElementById( "pageTitle" ).innerHTML = postData.name;
 }
 
 function PostsTableComparisonFunction( a, b )
@@ -58,7 +55,7 @@ function MyCustomDateToString( date )
 }
 
 // prints as blocks
-function PrintAllPosts( destinyElementId )
+function PrintAllPosts()
 {
 	allPosts.sort( PostsTableComparisonFunction );
 	
@@ -67,7 +64,8 @@ function PrintAllPosts( destinyElementId )
 	allPosts.forEach(
 		function( value, index, array )
 		{
-			dst += "<br />" + "<button id=\"" + array[index].name + "\" class=\"PostListElement\">";
+			dst += "<br />";
+			dst += "<button id=\"" + array[index].name + "\" class=\"PostListElement\">";
 			
 			dst += "<font size=5 color=#2bbb40><b>" + array[index].name + "</b></font>";
 			//dst += "<h3>" + array[index].name + "</h3>";
@@ -81,21 +79,16 @@ function PrintAllPosts( destinyElementId )
 		}
 	);
 	
-	document.getElementById( destinyElementId ).innerHTML = dst;
+	document.getElementById( "readMainPost" ).innerHTML = dst;
 	
 	allPosts.forEach(
 		function( value, index, array )
 		{
-			array[index].event = function()
-			{
-				OnPostClickEvent( array[index] );
-			};
-			
 			document.getElementById( array[index].name ).onclick = array[index].event;
 		}
 	);
-	
 }
+
 
 AddPost( "Initial test post",
 { year:2018, month:11, day:7, hour:22 },
