@@ -1,0 +1,41 @@
+
+.footerLeft, .footerRight
+{
+	background-color: #dddddd;
+	overflow: hidden;
+	font-size: 16px;
+	width: 100%;
+}
+
+.footerLeft a, .footerRight a
+{
+	text-align: center;
+	text-decoration: none;
+	padding: 14px 16px;
+}
+
+.footerLeft a:hover
+{
+	background-color: #404040;
+	color: #dddddd;
+}
+
+.footerLeft a
+{
+	float: left;
+}
+
+.footerLeft
+{
+	width: 50%;
+}
+
+.footerRight
+{
+	width: 50%;
+}
+
+.footerRight a
+{
+	float: right;
+}

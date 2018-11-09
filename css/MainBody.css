@@ -1,0 +1,62 @@
+
+.mainBody
+{
+	background-position: center;
+    background-image: url("../media/BGcode-blurred.jpg");
+    background-repeat: repeat-y;
+	background-size: 100%;
+	background-color: #bbbbbb;
+	padding: 10px;
+	min-height: 88vh;
+}
+
+.mainBody table
+{
+	/*font-family: arial, sans-serif;*/
+	border-collapse: collapse;
+    background-color: #ffffff;
+	width: 100%;
+}
+
+.mainBody table td
+{
+	border: 1px solid #aaaaaa;
+	text-align: left;
+	padding: 8px;
+}
+
+.mainBody table th
+{
+	border: 1px solid #aaaaaa;
+	text-align: left;
+	padding: 8px;
+}
+
+.mainBody table tr:nth-child(even)
+{
+    background-color: #dddddd;
+}
+
+
+pre
+{
+	max-height: 70vh;
+	overflow: auto;
+}
+
+
+.PostListElement
+{
+	text-align: left;
+	border: 1px solid black;
+	background-color: #cccccc;
+	color: #000000;
+	padding: 10px;
+}
+
+.PostListElement:hover
+{
+	background-color: #808080;
+	color: #ffffff;
+	padding: 10px;
+}

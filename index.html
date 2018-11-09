@@ -6,15 +6,31 @@
 		<meta charset="UTF-8">
 		<title id="pageTitle">TODO: POST TITLE HERE</title>
 		<link rel="stylesheet" href="./css/DefaultPostStyles.css">
+		<link rel="stylesheet" href="./css/Header.css">
+		<link rel="stylesheet" href="./css/Footer.css">
+		<link rel="stylesheet" href="./css/MainBody.css">
 		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cpp"></script>
 		<script src="./js/fileRead.js"></script>
+		<script src="./js/header.js"></script>
+		<script src="./js/postChooser.js"></script>
 	</head>
 	
 	
 	
 	<body>
 		
-		<a id="headerGenerator"></a>
+		<div id="container">
+			<div class="mainReferencesLeft">
+				<button onclick="LoadMainPage()">Main Page</a>
+			</div>
+			<div class="mainReferencesMiddle">
+			</div>
+			<div class="mainReferencesRight">
+				<button onclick="LoadContactPage()">Contact me</a>
+				<button onclick="PrintAllPosts()">Posts list</a>
+				<button onclick="LoadMyProjectsPage()">My projects</a>
+			</div>
+		</div>
 		
 		
 		
@@ -26,12 +42,19 @@
 		
 		
 		
-		<a id="footerGenerator"></a>
+		<div id="container">
+			<div class="footerLeft">
+				<a href="https://facebook.com">Facebook fanpage</a>
+				<a href="https://twitter.com">Twitter  something</a>
+				<a href="https://github.com/DrwalinPCF">My github site</a>
+			</div>
+			<div class="footerRight">
+				<a>EMail: <i><u><font color="#2020d0">########@gmail.com</font></u></i><a>
+			</div>
+		</div>
 		
 	</body>
 	
-	<script src="./js/header.js"></script>
-	<script src="./js/postChooser.js"></script>
 	<script src="./js/postsList.js"></script>
 	<script type="text/javascript">LoadMainPage();</script>
 	

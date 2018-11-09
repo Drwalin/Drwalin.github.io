@@ -1,0 +1,51 @@
+
+.mainReferencesLeft, .mainReferencesMiddle, .mainReferencesRight
+{
+	overflow: hidden;
+	background-color: #333;
+	font-size: 16px;
+}
+
+.mainReferencesLeft
+{
+	width: 30%;
+}
+
+.mainReferencesMiddle
+{
+	width: 40%;
+	text-align: center;
+}
+
+.mainReferencesRight
+{
+	width: 30%;
+}
+
+.mainReferencesLeft button, .mainReferencesRight button
+{
+	border: 0px solid black;
+	background-color: #333;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+.mainReferencesLeft button:hover, .mainReferencesRight button:hover
+{
+	background-color: #ddd;
+	color: black;
+}
+
+.mainReferencesLeft button
+{
+	float: left;
+}
+
+.mainReferencesRight button
+{
+	float: right;
+}
