@@ -84,11 +84,7 @@ function GetCategoryCheckboxState( name )
 function SetCategoryCheckboxState( name, value )
 {
 	var checkboxObject = document.getElementById( GetCategoryIdString( name ) );
-	if( checkboxObject == null )
-	{
-		alert( "dadad" );
-	}
-	else
+	if( checkboxObject != null )
 	{
 		checkboxObject.checked = value;
 	}
@@ -123,7 +119,9 @@ function GenerateCategoryCheckboxes()
 	categoryCheckBoxesList.forEach(
 		function( value, index, array )
 		{
+			dst += "<button id=\"" + "ButtonCheckboxOutter" + value + "\" >";
 			dst += "<input type=\"checkbox\" id=\"" + GetCategoryIdString( value ) + "\" " + GetCheckboxState( value ) + ">" + GetCategoryIdString( value );
+			dst += "</button>";
 		}
 	);
 	
@@ -188,31 +186,14 @@ function PrintAllPosts()
 	);
 	
 	document.getElementById( "readMainPost" ).innerHTML = dst;
+	
+	categoryCheckBoxesList.forEach(
+		function( value, index, array )
+		{
+			document.getElementById( "ButtonCheckboxOutter" + value ).onclick = function()
+			{
+				SetCategoryCheckboxState( value, !GetCategoryCheckboxState( value ) );
+			};
+		}
+	);
 }
-
-
-AddPost( "Test Category",
-"Initial test post",
-{ year:2018, month:11, day:7, hour:22 },
-"Some random document test elements.",
-"post.html" );
-
-AddPost( "Test Category",
-"Initial test post 2",
-{ year:2018, month:11, day:7, hour:23 },
-"Same random elements.",
-"post.html" );
-
-AddPost( "Test Category 2",
-"Initial test post 3",
-{ year:2018, month:11, day:8, hour:13 },
-"Same more random elements.",
-"post.html" );
-
-
-
-
-
-
-
-

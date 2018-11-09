@@ -24,18 +24,18 @@ body
 
 .mainReferencesLeft
 {
-	width: 25%;
+	width: 30%;
 }
 
 .mainReferencesMiddle
 {
-	width: 50%;
+	width: 40%;
 	text-align: center;
 }
 
 .mainReferencesRight
 {
-	width: 25%;
+	width: 30%;
 }
 
 .mainReferencesLeft button, .mainReferencesRight button
@@ -80,6 +80,10 @@ body
 
 .mainBody
 {
+	background-position: center;
+    background-image: url("../media/BGcode-blurred.jpg");
+    background-repeat: repeat-y;
+	background-size: 100%;
 	background-color: #bbbbbb;
 	padding: 10px;
 	min-height: 88vh;
