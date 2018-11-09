@@ -8,8 +8,8 @@ var categoryCheckBoxesList = new Array();
 // file - relative path from folder "posts"
 function AddPost( category, name, date, description, file )
 {
-	//if( date.year < currentDate.getFullYear() || ( date.year == currentDate.getFullYear() && ( date.month < currentDate.getMonth() || ( date.month == currentDate.getMonth() && ( date.day < currentDate.getDate() || ( date.day == currentDate.getDate() && ( date.hour <= currentDate.getHours() ) ) ) ) ) ) )
-	//{
+	//if( date.getTime() <= currentDate.getTime() )
+	{
 		allPosts.push( { category:category, name:name, date:date, description:description, file:file, event:"Null" } );
 		
 		allPosts[allPosts.length-1].event = function()
@@ -30,7 +30,7 @@ function AddPost( category, name, date, description, file )
 		{
 			categoryCheckBoxesList.push( { category:category, value:true } );
 		}
-	//}
+	}
 }
 
 function OnPostClickEvent( postData )
@@ -39,132 +39,16 @@ function OnPostClickEvent( postData )
 	document.getElementById( "pageTitle" ).innerHTML = postData.name;
 }
 
-function PostsTableComparisonFunction( a, b )
+function ObjectsByDateComparison( a, b )
 {
-	if( (a.date.year - b.date.year) != 0 )
-	{
-		return b.date.year - a.date.year
-	}
-	else if( (a.date.month - b.date.month) != 0 )
-	{
-		return b.date.month - a.date.month;
-	}
-	else if( (a.date.day - b.date.day) != 0 )
-	{
-		return b.date.day - a.date.day;
-	}
-	else if( (a.date.hour - b.date.hour) != 0 )
-	{
-		return b.date.hour - a.date.hour;
-	}
-	else
-	{
-		return a.name.localeCompare( b.name );
-	}
-	
-	return 0;
+	return ( b.date.getTime() - a.date.getTime() );
 }
 
 
 
 function MyCustomDateToString( date )
 {
-	return date.year.toString() + "." + date.month.toString() + "." + date.day.toString() + ":" + date.hour.toString();
-}
-
-
-function GetCategoryIdString( name )
-{
-	return "CheckboxButton " + name;
-}
-
-function GetClassNameForCheckboxButtonFromState( value )
-{
-	if( value )
-	{
-		return "PostListStatusButtonCheckboxOff";
-	}
-	return "PostListStatusButtonCheckboxOn";
-}
-
-function GetCategoryCheckboxState( name )
-{
-	var ret = true;
-	categoryCheckBoxesList.forEach(
-		function( value, index, array )
-		{
-			if( value.category == name )
-			{
-				ret = value.value;
-			}
-		}
-	);
-	return ret;
-}
-
-function SetCategoryCheckboxState( name, srcValue )
-{
-	categoryCheckBoxesList.forEach(
-		function( value, index, array )
-		{
-			if( value.category == name )
-			{
-				value.value = srcValue;
-				document.getElementById( "Square" + GetCategoryIdString( name ) ).className = GetClassNameForCheckboxButtonFromState( srcValue );
-				return;
-			}
-		}
-	);
-}
-
-function MarkAllCategoryCheckboxes()
-{
-	categoryCheckBoxesList.forEach(
-		function( value, index, array )
-		{
-			value.value = true;
-			document.getElementById( "Square" + GetCategoryIdString( value.category ) ).className = GetClassNameForCheckboxButtonFromState( true );
-		}
-	);
-}
-
-function UnmarkAllCategoryCheckboxes()
-{
-	categoryCheckBoxesList.forEach(
-		function( value, index, array )
-		{
-			value.value = false;
-			document.getElementById( "Square" + GetCategoryIdString( value.category ) ).className = GetClassNameForCheckboxButtonFromState( false );
-		}
-	);
-}
-
-function GenerateCategoryCheckboxes()
-{
-	var dst = "";
-	
-	categoryCheckBoxesList.forEach(
-		function( value, index, array )
-		{
-			dst += "<button id=\"" + GetCategoryIdString( value.category ) + "\" class=\"EmptyButton\" >";
-			dst += "<div id=\"container\">";
-			dst += "<div id=\"Square" + GetCategoryIdString( value.category ) + "\" class=\"" + GetClassNameForCheckboxButtonFromState( value.value ) + "\"></div>";
-			dst += "<div class=\"Text\">";
-			dst += value.category;
-			dst += "</div>";
-			dst += "</div>";
-			
-			dst += "</button>";
-		}
-	);
-	
-	dst += "<br />";
-	dst += "<button class=\"PostListStatusButton\" onclick=\"PrintAllPosts()\">Submit new filter</button>      ";
-	dst += "<button class=\"PostListStatusButton\" onclick=\"MarkAllCategoryCheckboxes()\">Mark all</button>      ";
-	dst += "<button class=\"PostListStatusButton\" onclick=\"UnmarkAllCategoryCheckboxes()\">Unmark all</button>      ";
-	dst += "<br />";
-	
-	return dst;
+	return "" + date.getFullYear() + "." + date.getMonth() + "." + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
 }
 
 function GeneratePostsList()
@@ -229,12 +113,11 @@ function SetEventsForPostsAndCheckboxes()
 	);
 }
 
-// prints as blocks
 function PrintAllPosts()
 {
 	document.getElementById( "pageTitle" ).innerHTML = "Drwalin posts";
-
-	allPosts.sort( PostsTableComparisonFunction );
+	
+	allPosts.sort( ObjectsByDateComparison );
 	
 	var dst = "";
 	

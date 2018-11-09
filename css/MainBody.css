@@ -14,7 +14,6 @@
 
 .mainBody table
 {
-	/*font-family: arial, sans-serif;*/
 	border-collapse: collapse;
     background-color: #ffffff;
 	width: 100%;
@@ -39,11 +38,16 @@
     background-color: #dddddd;
 }
 
+.FullBackground
+{
+	background-color: #bbbbbb;
+}
 
 pre
 {
 	max-height: 70vh;
 	overflow: auto;
+	background-color: #bbbbbb;
 }
 
 .PostsTableRow
