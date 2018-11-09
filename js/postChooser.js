@@ -119,7 +119,7 @@ function GenerateCategoryCheckboxes()
 	categoryCheckBoxesList.forEach(
 		function( value, index, array )
 		{
-			dst += "<button id=\"" + "ButtonCheckboxOutter" + value + "\" >";
+			dst += "<button id=\"" + "ButtonCheckboxOutter" + value + "\" class=\"PostListStatusButtonCheckbox\" >";
 			dst += "<input type=\"checkbox\" id=\"" + GetCategoryIdString( value ) + "\" " + GetCheckboxState( value ) + ">" + GetCategoryIdString( value );
 			dst += "</button>";
 		}
@@ -160,17 +160,24 @@ function PrintAllPosts()
 	dst += GenerateCategoryCheckboxes();
 	
 	dst += "<br />";
-	dst += "<button class=\"PostListElement\" onclick=\"PrintAllPosts()\">Submit new filter</button>      ";
-	dst += "<button class=\"PostListElement\" onclick=\"MarkAllCategoryCheckboxes()\">Mark all</button>      ";
-	dst += "<button class=\"PostListElement\" onclick=\"UnmarkAllCategoryCheckboxes()\">Unmark all</button>      ";
+	dst += "<button class=\"PostListStatusButton\" onclick=\"PrintAllPosts()\">Submit new filter</button>      ";
+	dst += "<button class=\"PostListStatusButton\" onclick=\"MarkAllCategoryCheckboxes()\">Mark all</button>      ";
+	dst += "<button class=\"PostListStatusButton\" onclick=\"UnmarkAllCategoryCheckboxes()\">Unmark all</button>      ";
 	dst += "<br />";
+	
+	
+	var drawed = 0;
 	
 	allPosts.forEach(
 		function( value, index, array )
 		{
 			if( GetCategoryCheckboxState( array[index].category ) == true )
 			{
-				dst += "<br />";
+				if( drawed%3 == 0 )
+				{
+					dst += "<div class=\"PostsTableRow\">";
+				}
+				
 				dst += "<button id=\"" + array[index].name + "\" class=\"PostListElement\">";
 				
 				dst += "<font size=5 color=#2bbb40><b>" + array[index].name + "</b></font>";
@@ -180,23 +187,41 @@ function PrintAllPosts()
 				dst += MyCustomDateToString( array[index].date );
 				
 				dst += "</button>";
-				dst += "<br />";
+				
+				if( drawed%3 == 2 || index+1 == array.length )
+				{
+					dst += "</div>";
+				}
+				
+				drawed += 1;
 			}
 		}
 	);
+	
+	
 	
 	document.getElementById( "readMainPost" ).innerHTML = dst;
 	
 	categoryCheckBoxesList.forEach(
 		function( value, index, array )
 		{
-			document.getElementById( "ButtonCheckboxOutter" + array[index] ).onclick = function()
+			var element = document.getElementById( "ButtonCheckboxOutter" + array[index] );
+			element.onclick = function()
 			{
 				SetCategoryCheckboxState( array[index], !GetCategoryCheckboxState( array[index] ) );
+				/*
+				if( GetCategoryCheckboxState( array[index] ) )
+				{
+					element.className = "PostListStatusButtonCheckboxOn";
+				}
+				else
+				{
+					element.className = "PostListStatusButtonCheckboxOff";
+				}
+				*/
 			};
 		}
 	);
-	
 	
 	allPosts.forEach(
 		function( value, index, array )
