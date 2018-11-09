@@ -20,7 +20,7 @@ function AddPost( category, name, date, description, file )
 		var i;
 		for( i = 0; i < categoryCheckBoxesList.length; i++ )
 		{
-			if( categoryCheckBoxesList[i] == category )
+			if( categoryCheckBoxesList[i].category == category )
 			{
 				break;
 			}
@@ -28,7 +28,7 @@ function AddPost( category, name, date, description, file )
 		
 		if( i == categoryCheckBoxesList.length )
 		{
-			categoryCheckBoxesList.push( category );
+			categoryCheckBoxesList.push( { category:category, value:true } );
 		}
 	//}
 }
@@ -66,66 +66,55 @@ function PostsTableComparisonFunction( a, b )
 }
 
 
-function GetCategoryIdString( name )
-{
-	return "Checkbox " + name;
-}
-
-function GetCategoryCheckboxState( name )
-{
-	var checkboxObject = document.getElementById( GetCategoryIdString( name ) );
-	if( checkboxObject == null )
-	{
-		return true;
-	}
-	return checkboxObject.checked;
-}
-
-function SetCategoryCheckboxState( name, value )
-{
-	var checkboxObject = document.getElementById( GetCategoryIdString( name ) );
-	if( checkboxObject != null )
-	{
-		checkboxObject.checked = value;
-	}
-}
-
-function GetCheckboxState( name )
-{
-	var currentCheckbox = document.getElementById( GetCategoryIdString( name ) );
-	if( currentCheckbox != null )
-	{
-		if( GetCategoryCheckboxState( name ) )
-		{
-			return " checked";
-		}
-		else
-		{
-			return "";
-		}
-	}
-	return " checked";
-}
 
 function MyCustomDateToString( date )
 {
 	return date.year.toString() + "." + date.month.toString() + "." + date.day.toString() + ":" + date.hour.toString();
 }
 
-function GenerateCategoryCheckboxes()
+
+function GetCategoryIdString( name )
 {
-	var dst = "";
-	
+	return "CheckboxButton " + name;
+}
+
+function GetClassNameForCheckboxButtonFromState( value )
+{
+	if( value )
+	{
+		return "PostListStatusButtonCheckboxOff";
+	}
+	return "PostListStatusButtonCheckboxOn";
+}
+
+function GetCategoryCheckboxState( name )
+{
+	var ret = true;
 	categoryCheckBoxesList.forEach(
 		function( value, index, array )
 		{
-			dst += "<button id=\"" + "ButtonCheckboxOutter" + value + "\" class=\"PostListStatusButtonCheckbox\" >";
-			dst += "<input type=\"checkbox\" id=\"" + GetCategoryIdString( value ) + "\" " + GetCheckboxState( value ) + ">" + GetCategoryIdString( value );
-			dst += "</button>";
+			if( value.category == name )
+			{
+				ret = value.value;
+			}
 		}
 	);
-	
-	return dst;
+	return ret;
+}
+
+function SetCategoryCheckboxState( name, srcValue )
+{
+	categoryCheckBoxesList.forEach(
+		function( value, index, array )
+		{
+			if( value.category == name )
+			{
+				value.value = srcValue;
+				document.getElementById( "Square" + GetCategoryIdString( name ) ).className = GetClassNameForCheckboxButtonFromState( srcValue );
+				return;
+			}
+		}
+	);
 }
 
 function MarkAllCategoryCheckboxes()
@@ -133,7 +122,8 @@ function MarkAllCategoryCheckboxes()
 	categoryCheckBoxesList.forEach(
 		function( value, index, array )
 		{
-			SetCategoryCheckboxState( value, true );
+			value.value = true;
+			document.getElementById( "Square" + GetCategoryIdString( value.category ) ).className = GetClassNameForCheckboxButtonFromState( true );
 		}
 	);
 }
@@ -143,7 +133,98 @@ function UnmarkAllCategoryCheckboxes()
 	categoryCheckBoxesList.forEach(
 		function( value, index, array )
 		{
-			SetCategoryCheckboxState( value, false );
+			value.value = false;
+			document.getElementById( "Square" + GetCategoryIdString( value.category ) ).className = GetClassNameForCheckboxButtonFromState( false );
+		}
+	);
+}
+
+function GenerateCategoryCheckboxes()
+{
+	var dst = "";
+	
+	categoryCheckBoxesList.forEach(
+		function( value, index, array )
+		{
+			dst += "<button id=\"" + GetCategoryIdString( value.category ) + "\" class=\"EmptyButton\" >";
+			dst += "<div id=\"container\">";
+			dst += "<div id=\"Square" + GetCategoryIdString( value.category ) + "\" class=\"" + GetClassNameForCheckboxButtonFromState( value.value ) + "\"></div>";
+			dst += "<div class=\"Text\">";
+			dst += value.category;
+			dst += "</div>";
+			dst += "</div>";
+			
+			dst += "</button>";
+		}
+	);
+	
+	dst += "<br />";
+	dst += "<button class=\"PostListStatusButton\" onclick=\"PrintAllPosts()\">Submit new filter</button>      ";
+	dst += "<button class=\"PostListStatusButton\" onclick=\"MarkAllCategoryCheckboxes()\">Mark all</button>      ";
+	dst += "<button class=\"PostListStatusButton\" onclick=\"UnmarkAllCategoryCheckboxes()\">Unmark all</button>      ";
+	dst += "<br />";
+	
+	return dst;
+}
+
+function GeneratePostsList()
+{
+	var dst = "";
+	var drawed = 0;
+	
+	allPosts.forEach(
+		function( value, index, array )
+		{
+			if( GetCategoryCheckboxState( value.category ) == true )
+			{
+				if( drawed%3 == 0 )
+				{
+					dst += "<div class=\"PostsTableRow\">";
+				}
+				
+				dst += "<button id=\"" + value.name + "\" class=\"PostListElement\">";
+				
+				dst += "<font size=5 color=#2bbb40><b>" + value.name + "</b></font>";
+				dst += "<br />";
+				dst += "<font size=3>" + value.description + "</font>";
+				dst += "<br />";
+				dst += MyCustomDateToString( value.date );
+				
+				dst += "</button>";
+				
+				if( drawed%3 == 2 || index+1 == array.length )
+				{
+					dst += "</div>";
+				}
+				
+				drawed += 1;
+			}
+		}
+	);
+	
+	return dst;
+}
+
+function SetEventsForPostsAndCheckboxes()
+{
+	categoryCheckBoxesList.forEach(
+		function( value, index, array )
+		{
+			var element = document.getElementById( GetCategoryIdString( value.category ) );
+			element.onclick = function()
+			{
+				SetCategoryCheckboxState( value.category, !GetCategoryCheckboxState( value.category ) );
+			};
+		}
+	);
+	
+	allPosts.forEach(
+		function( value, index, array )
+		{
+			if( GetCategoryCheckboxState( value.category ) == true )
+			{
+				document.getElementById( value.name ).onclick = value.event;
+			}
 		}
 	);
 }
@@ -159,78 +240,9 @@ function PrintAllPosts()
 	
 	dst += GenerateCategoryCheckboxes();
 	
-	dst += "<br />";
-	dst += "<button class=\"PostListStatusButton\" onclick=\"PrintAllPosts()\">Submit new filter</button>      ";
-	dst += "<button class=\"PostListStatusButton\" onclick=\"MarkAllCategoryCheckboxes()\">Mark all</button>      ";
-	dst += "<button class=\"PostListStatusButton\" onclick=\"UnmarkAllCategoryCheckboxes()\">Unmark all</button>      ";
-	dst += "<br />";
-	
-	
-	var drawed = 0;
-	
-	allPosts.forEach(
-		function( value, index, array )
-		{
-			if( GetCategoryCheckboxState( array[index].category ) == true )
-			{
-				if( drawed%3 == 0 )
-				{
-					dst += "<div class=\"PostsTableRow\">";
-				}
-				
-				dst += "<button id=\"" + array[index].name + "\" class=\"PostListElement\">";
-				
-				dst += "<font size=5 color=#2bbb40><b>" + array[index].name + "</b></font>";
-				dst += "<br />";
-				dst += "<font size=3>" + array[index].description + "</font>";
-				dst += "<br />";
-				dst += MyCustomDateToString( array[index].date );
-				
-				dst += "</button>";
-				
-				if( drawed%3 == 2 || index+1 == array.length )
-				{
-					dst += "</div>";
-				}
-				
-				drawed += 1;
-			}
-		}
-	);
-	
-	
+	dst += GeneratePostsList();
 	
 	document.getElementById( "readMainPost" ).innerHTML = dst;
 	
-	categoryCheckBoxesList.forEach(
-		function( value, index, array )
-		{
-			var element = document.getElementById( "ButtonCheckboxOutter" + array[index] );
-			element.onclick = function()
-			{
-				SetCategoryCheckboxState( array[index], !GetCategoryCheckboxState( array[index] ) );
-				/*
-				if( GetCategoryCheckboxState( array[index] ) )
-				{
-					element.className = "PostListStatusButtonCheckboxOn";
-				}
-				else
-				{
-					element.className = "PostListStatusButtonCheckboxOff";
-				}
-				*/
-			};
-		}
-	);
-	
-	allPosts.forEach(
-		function( value, index, array )
-		{
-			if( GetCategoryCheckboxState( array[index].category ) == true )
-			{
-				document.getElementById( array[index].name ).onclick = array[index].event;
-			}
-		}
-	);
-	
+	SetEventsForPostsAndCheckboxes();
 }

@@ -51,23 +51,38 @@ pre
 	text-align: center;
 }
 
+.Text
+{
+	font-size: 15px;
+	margin: 5px;
+}
+
 .PostListStatusButtonCheckboxOn
+{
+	margin: 5px 0px;
+	width: 15px;
+	height: 15px;
+	border: 1px solid #707070;
+	background-color: #aaaaaa;
+	position: relative;
+}
+
+.PostListStatusButtonCheckboxOff
+{
+	margin: 5px 0px;
+	width: 15px;
+	height: 15px;
+	border: 1px solid gray;
+	background-color: #000000;
+	position: relative;
+}
+
+.EmptyButton
 {
 	text-align: left;
 	border: 1px solid black;
 	background-color: #cccccc;
 	color: #000000;
-	padding: 5px;
-	margin: 5px 5px;
-}
-
-.PostListStatusButtonCheckboxOff
-{
-	text-align: left;
-	border: 1px solid black;
-	background-color: #000000;
-	color: #cccccc;
-	padding: 5px;
 	margin: 5px 5px;
 }
 
@@ -79,6 +94,7 @@ pre
 	color: #000000;
 	padding: 10px;
 	margin: 5px 5px;
+	font-size: 15px;
 }
 
 .PostListStatusButton:hover
