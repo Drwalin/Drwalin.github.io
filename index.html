@@ -4,27 +4,33 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>TODO: POST TITLE HERE</title>
-		<link rel="stylesheet" href="./css/DefaultPostStyles.css">
+		<title id="pageTitle">TODO: POST TITLE HERE</title>
+		<link rel="stylesheet" href="../css/DefaultPostStyles.css">
 		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cpp&amp;skin=sons-of-obsidian"></script>
+		<script src="../js/fileRead.js"></script>
 	</head>
 	
 	
 	<body>
+		
 		<a id="headerGenerator"></a>
 		
 		
+		
 		<div class="mainBody">
-			<h1><font color="#007000">This is a heading</font></h1>
-			<p>Document content goes here...<br /></p>
-			
-			<a href="./codeHighlightTest.html">Code highlight</a>
+		
+			<a id="readMainPost"></a>
+		
 		</div>
 		
 		
+		
 		<a id="footerGenerator"></a>
+		
 	</body>
 	
-	<script src="./js/header.js"></script>
+	<script src="../js/header.js"></script>
+	<script src="../js/postChooser.js"></script>
+	<script type="text/javascript">PrintAllPosts();</script>
 	
 </html>
