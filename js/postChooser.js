@@ -168,10 +168,10 @@ function PrintAllPosts()
 	allPosts.forEach(
 		function( value, index, array )
 		{
-			if( GetCategoryCheckboxState( value.category ) == true )
+			if( GetCategoryCheckboxState( array[index].category ) == true )
 			{
 				dst += "<br />";
-				dst += "<button onclick=\"" + array[index].event + "\" id=\"" + array[index].name + "\" class=\"PostListElement\">";
+				dst += "<button id=\"" + array[index].name + "\" class=\"PostListElement\">";
 				
 				dst += "<font size=5 color=#2bbb40><b>" + array[index].name + "</b></font>";
 				dst += "<br />";
@@ -190,10 +190,22 @@ function PrintAllPosts()
 	categoryCheckBoxesList.forEach(
 		function( value, index, array )
 		{
-			document.getElementById( "ButtonCheckboxOutter" + value ).onclick = function()
+			document.getElementById( "ButtonCheckboxOutter" + array[index] ).onclick = function()
 			{
-				SetCategoryCheckboxState( value, !GetCategoryCheckboxState( value ) );
+				SetCategoryCheckboxState( array[index], !GetCategoryCheckboxState( array[index] ) );
 			};
 		}
 	);
+	
+	
+	allPosts.forEach(
+		function( value, index, array )
+		{
+			if( GetCategoryCheckboxState( array[index].category ) == true )
+			{
+				document.getElementById( array[index].name ).onclick = array[index].event;
+			}
+		}
+	);
+	
 }
