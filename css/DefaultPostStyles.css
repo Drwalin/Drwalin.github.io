@@ -15,7 +15,7 @@ body
 
 /*	Header:	*/
 
-.mainReferencesLeft, .mainReferencesRight
+.mainReferencesLeft, .mainReferencesMiddle, .mainReferencesRight
 {
 	overflow: hidden;
 	background-color: #333;
@@ -24,12 +24,18 @@ body
 
 .mainReferencesLeft
 {
+	width: 25%;
+}
+
+.mainReferencesMiddle
+{
 	width: 50%;
+	text-align: center;
 }
 
 .mainReferencesRight
 {
-	width: 50%;
+	width: 25%;
 }
 
 .mainReferencesLeft button, .mainReferencesRight button
@@ -41,6 +47,7 @@ body
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
+	font-size: 16px;
 }
 
 .mainReferencesLeft button:hover, .mainReferencesRight button:hover
@@ -164,8 +171,6 @@ pre
 {
 	float: left;
 }
-
-
 
 .footerLeft
 {
