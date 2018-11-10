@@ -56,16 +56,10 @@
 	float: center;
 }
 
-.FullBackground
-{
-	background-color: #bbbbbb;
-}
-
 pre
 {
 	max-height: 70vh;
 	overflow: auto;
-	/*background-color: rgba( 192, 192, 192 255 );*/
 }
 
 .Text
