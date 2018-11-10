@@ -12,6 +12,7 @@ function RandomizeObject( objectId )
 		animatedBackgroundObjects[objectId].y = Math.floor( ( Math.random() * ( height * 2 / 3 ) ) - 150 );
 		animatedBackgroundObjects[objectId].x = Math.floor( ( Math.random() * ( width - 60 ) ) + 20 );
 		animatedBackgroundObjects[objectId].string = "";
+		animatedBackgroundObjects[objectId].length = Math.floor( ( Math.random() * 15 ) + 10 );
 	}
 	else
 	{
@@ -21,7 +22,7 @@ function RandomizeObject( objectId )
 
 function MakeRandomAnimatedBackgroundObject( objectId )
 {
-	animatedBackgroundObjects[objectId] = { x:0, y:0, string:"", length:Math.floor( ( Math.random() * 15 ) + 10 ), id:objectId, screenObject:null };
+	animatedBackgroundObjects[objectId] = { x:0, y:0, string:"", length:Math.floor( ( Math.random() * 15 ) + 10 ), id:objectId, canvasObject:null, canvasContext:null };
 	RandomizeObject( objectId );
 }
 
@@ -39,9 +40,8 @@ function GetNameOfAnimatedObject( numId )
 
 function UpdateAnimatedObjects( objectId, animationId, parent )
 {
-	//var screenObject = animatedBackgroundObjects[objectId].screenObject;
-	var screenObject = document.getElementById( GetNameOfAnimatedObject( objectId ) );
-	//var parent = document.getElementById( "MainBodyDivIdToIdentify" );
+	var screenObject = animatedBackgroundObjects[objectId].canvasObject;
+	var canvasContext = screenObject.getContext("2d");//animatedBackgroundObjects[objectId].canvasContext;
 	if( parent != null && screenObject != null )
 	{
 		var width = parent.offsetWidth;
@@ -55,54 +55,35 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 		{
 			if( animatedBackgroundObjects[objectId].string.length >= animatedBackgroundObjects[objectId].length )
 			{
-				animatedBackgroundObjects[objectId].y += 25;
+				animatedBackgroundObjects[objectId].y += 20;
 				animatedBackgroundObjects[objectId].string = animatedBackgroundObjects[objectId].string.slice( 1 );
 			}
 			animatedBackgroundObjects[objectId].string += RandomSign();
 		}
 		
-		
 		screenObject.style.top = animatedBackgroundObjects[objectId].y.toString() + "px";
 		screenObject.style.left = animatedBackgroundObjects[objectId].x.toString() + "px";
 		
-		var dstHtml = "<b>";
-		
 		var string = animatedBackgroundObjects[objectId].string;
+		
+		
+		screenObject.width = 20;
+		screenObject.height = string.length * 20;
+		
+		var grd = canvasContext.createLinearGradient( 0, 0, 0, animatedBackgroundObjects[objectId].length * 20 );
+		grd.addColorStop( 0, "black" );
+		grd.addColorStop( 1, "#00d000" );
+		canvasContext.fillStyle = grd;
+		canvasContext.font = "20px monospace";
+		
+		canvasContext.clearRect( 0, 0, screenObject.width, screenObject.height );
 		
 		var j = 0;
 		for( j = 0; j < string.length; j++ )
 		{
-			var currentColorGreenComponent = 255 - Math.floor( ( ( animatedBackgroundObjects[objectId].length - j ) * 255 ) / animatedBackgroundObjects[objectId].length );
-			if( currentColorGreenComponent < 1 )
-				currentColorGreenComponent = 1;
-			else if( currentColorGreenComponent > 254 )
-				currentColorGreenComponent = 254;
-			var currentColor = "#00";
-			if( currentColorGreenComponent.toString(16).length < 2 )
-			{
-				if( currentColorGreenComponent.toString(16).length == 0 )
-				{
-					currentColor += "00";
-				}
-				else
-				{
-					currentColor += "0" + currentColorGreenComponent.toString(16);
-				}
-			}
-			else
-			{
-				currentColor += currentColorGreenComponent.toString(16);
-			}
-			currentColor += "00";
-			dstHtml += "<font size=3 color=" + currentColor + ">" + string.charAt(j) + "</font>";
-			if( j+1 < string.length )
-			{
-				dstHtml += "<br />";
-			}
+			//canvasContext.clearRect( 0, j*20, screenObject.width, (j+1)*20 );
+			canvasContext.fillText( string.charAt(j), 0, (j+1)*20 );
 		}
-		dstHtml += "</b>";
-		
-		document.getElementById( GetNameOfAnimatedObject( objectId ) ).innerHTML = dstHtml;
 	}
 	else
 	{
@@ -135,7 +116,7 @@ function InitAnimatedBackground( numberOfAnimatedObjects )
 		for( i = 0; i < numberOfAnimatedObjects; i++ )
 		{
 			MakeRandomAnimatedBackgroundObject( i );
-			dst += "<div id =\"" + GetNameOfAnimatedObject( i ) + "\"></div>";
+			dst += "<canvas id =\"" + GetNameOfAnimatedObject( i ) + "\"></canvas>";
 		}
 		
 		document.getElementById( "BackgroundAnimationSpace" ).innerHTML = dst;
@@ -143,7 +124,9 @@ function InitAnimatedBackground( numberOfAnimatedObjects )
 		animatedBackgroundObjects.forEach(
 		function( object, i, array )
 		{
-			object.screenObject = document.getElementById( GetNameOfAnimatedObject( i ) );
+			object.canvasObject = document.getElementById( GetNameOfAnimatedObject( i ) );
+			object.canvasContext = object.canvasObject.getContext("2d");
+			
 			var animationSpeed = Math.floor( ( Math.random() * 80 ) + 80 );
 			var obj = animatedBackgroundObjects[i];
 			var id = setInterval(

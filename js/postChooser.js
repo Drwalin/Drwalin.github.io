@@ -63,7 +63,7 @@ function GeneratePostsList()
 		{
 			if( GetCategoryCheckboxState( value.category ) == true )
 			{
-				if( drawed%1 == 0 )
+				if( drawed%3 == 0 )
 				{
 					dst += "<tr>";
 				}
@@ -82,7 +82,7 @@ function GeneratePostsList()
 				
 				dst += "</td>";
 				
-				if( drawed%1 == 0 || index+1 == array.length )
+				if( drawed%3 == 2 || index+1 == array.length )
 				{
 					dst += "</tr>";
 				}
