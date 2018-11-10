@@ -7,6 +7,7 @@
 	padding: 10px;
 	height: 90.0vh;
 	overflow: auto;
+	background-size: 100%;
 }
 
 .MainBodyOuter
@@ -16,6 +17,7 @@
 	background-color: rgba( 0, 0, 0, 0 );
 	height: 90.0vh;
 	overflow: hidden;
+	background-size: 100%;
 }
 
 .MainBodyTable

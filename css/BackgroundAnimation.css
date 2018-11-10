@@ -1,9 +1,10 @@
 
 .WholeAnimationDiv
 {
+	background-size: 100%;
 	left: 0px;
 	top: 0px;
-	position: absolute;
+	position: relative;
 	overflow: hidden;
 	width: 100vh;
 	height: 100%;
