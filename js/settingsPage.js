@@ -19,5 +19,6 @@ function InitSettingsFromCookies()
 
 function SaveSettingsToCookie()
 {
-	SetCookie( "particles", parentOfAnimatedObjects.length.toString(), 311 );
+	SetCookie( "particles", animatedBackgroundObjects.length.toString(), 311 );
+	alert( "particle cookie setting setted" );
 }
