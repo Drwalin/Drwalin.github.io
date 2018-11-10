@@ -9,3 +9,6 @@ Code highliting:
 		<pre class="prettyprint">int main( int argc, char **argv ) {	/*some code*/	return 0; }</pre>
 	-start index nex block of code from 311th line:
 		<?prettify linenums=311?>
+
+Get data from link:
+	document.querySelector("link[title=RSD]").getAttribute("href");
