@@ -16,6 +16,8 @@
 		<script src="./js/postChooser.js"></script>
 		<script src="./js/checkboxes.js"></script>
 		<script src="./js/getFromURL.js"></script>
+		<script src="./js/cookies.js"></script>
+		<script src="./js/settingsPage.js"></script>
 	</head>
 	
 	
@@ -65,6 +67,7 @@
 	<script type="text/javascript">
 		InitAllPosts();
 		LoadMainPage();
+		InitSettingsFromCookies();
 		if( GetFromURLIsValidName("particles") >= 0 )
 		{
 			InitAnimatedBackground( parseInt( GetFromURL( "particles" ), 10 ) );
@@ -73,6 +76,7 @@
 		{
 			InitAnimatedBackground( 50 );
 		}
+		SaveSettingsToCookie();
 	</script>
 	
 </html>

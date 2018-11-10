@@ -5,11 +5,6 @@ function GetFromURLIsValidName( name )
 	return index;
 }
 
-function GetFromURL( name, valid )
-{
-	
-}
-
 function GetFromURL( name )
 {
 	var index = GetFromURLIsValidName( name );

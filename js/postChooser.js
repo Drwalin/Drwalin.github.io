@@ -1,5 +1,5 @@
 
-var allPosts = new Array();
+var allPosts = [];
 var currentDate = new Date();
 
 var categoryCheckBoxesList = new Array();

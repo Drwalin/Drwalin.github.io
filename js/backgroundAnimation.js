@@ -1,5 +1,5 @@
 
-var animatedBackgroundObjects = new Array();
+var animatedBackgroundObjects = [];
 var parentOfAnimatedObjects = document.getElementById( "MainBodyDivIdToIdentify" );
 
 function RandomizeObject( objectId )
@@ -22,7 +22,7 @@ function RandomizeObject( objectId )
 
 function MakeRandomAnimatedBackgroundObject( objectId )
 {
-	animatedBackgroundObjects[objectId] = { x:0, y:0, string:"", length:Math.floor( ( Math.random() * 15 ) + 10 ), id:objectId, canvasObject:null, canvasContext:null };
+	animatedBackgroundObjects[objectId] = { x:0, y:0, string:"", length:Math.floor( ( Math.random() * 15 ) + 10 ), id:objectId, canvasObject:null, canvasContext:null, animationID:0, stopStatus:0 };
 	RandomizeObject( objectId );
 }
 
@@ -100,6 +100,7 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 			errorStr += "MainBodyDivIdToIdentify";
 		}
 		alert( errorStr );
+		clearInterval( animatedBackgroundObjects[objectId].animationID );
 	}
 }
 
@@ -111,6 +112,21 @@ function InitAnimatedBackground( numberOfAnimatedObjects )
 	{
 		var dst = "";
 		var i;
+		
+		// clear old array
+		{
+			for( i = 0; i < animatedBackgroundObjects.length; i++ )
+			{
+				animatedBackgroundObjects[i].stopStatus = 1;
+			}
+			
+			for( i = 0; i < animatedBackgroundObjects.length; i++ )
+			{
+				clearInterval( animatedBackgroundObjects[i].animationID );
+			}
+			
+			animatedBackgroundObjects = [];
+		}
 		
 		for( i = 0; i < numberOfAnimatedObjects; i++ )
 		{
@@ -126,7 +142,7 @@ function InitAnimatedBackground( numberOfAnimatedObjects )
 			object.canvasObject = document.getElementById( GetNameOfAnimatedObject( i ) );
 			object.canvasContext = object.canvasObject.getContext("2d");
 			
-			var animationSpeed = Math.floor( ( Math.random() * 80 ) + 80 );
+			var animationSpeed = Math.floor( ( Math.random() * 60 ) + 60 );
 			var obj = animatedBackgroundObjects[i];
 			var id = setInterval(
 			function()
@@ -134,6 +150,7 @@ function InitAnimatedBackground( numberOfAnimatedObjects )
 				UpdateAnimatedObjects( i, id, parentOfAnimatedObjects );
 			},
 			animationSpeed );
+			obj.animationID = id;
 		}
 		);
 	}
