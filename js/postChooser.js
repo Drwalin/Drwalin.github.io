@@ -56,6 +56,8 @@ function GeneratePostsList()
 	var dst = "";
 	var drawed = 0;
 	
+	dst += "<table class=\"TableOfPosts\">";
+	
 	allPosts.forEach(
 		function( value, index, array )
 		{
@@ -63,8 +65,10 @@ function GeneratePostsList()
 			{
 				if( drawed%3 == 0 )
 				{
-					dst += "<div class=\"PostsTableRow\">";
+					dst += "<tr>";
 				}
+				
+				dst += "<td>";
 				
 				dst += "<button id=\"" + value.name + "\" class=\"PostListElement\">";
 				
@@ -76,15 +80,19 @@ function GeneratePostsList()
 				
 				dst += "</button>";
 				
+				dst += "</td>";
+				
 				if( drawed%3 == 2 || index+1 == array.length )
 				{
-					dst += "</div>";
+					dst += "</tr>";
 				}
 				
 				drawed += 1;
 			}
 		}
 	);
+	
+	dst += "</table>";
 	
 	return dst;
 }

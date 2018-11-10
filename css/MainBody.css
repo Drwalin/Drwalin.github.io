@@ -1,5 +1,5 @@
 
-.mainBody
+.MainBody
 {
     text-align: justify;
     text-justify: inter-word;
@@ -12,30 +12,48 @@
 	min-height: 88vh;
 }
 
-.mainBody table
+.MainBodyTable
 {
 	border-collapse: collapse;
     background-color: #ffffff;
 	width: 100%;
 }
 
-.mainBody table td
+.MainBodyTable td
 {
 	border: 1px solid #aaaaaa;
 	text-align: center;
 	padding: 8px;
 }
 
-.mainBody table th
+.MainBodyTable th
 {
 	border: 1px solid #aaaaaa;
 	text-align: center;
 	padding: 8px;
 }
 
-.mainBody table tr:nth-child(even)
+.MainBodyTable tr:nth-child(even)
 {
     background-color: #dddddd;
+}
+
+.TableOfPosts
+{
+    margin-left: auto; 
+    margin-right: auto;
+	text-align: center;
+	padding: 0px;
+	border-collapse: collapse;
+    background-color: rgba( 0, 0, 0, 0 );
+}
+
+.TableOfPosts tr
+{
+	border: 0px solid #aaaaaa;
+	padding: 0px;
+	text-align: center;
+	float: center;
 }
 
 .FullBackground
@@ -47,12 +65,7 @@ pre
 {
 	max-height: 70vh;
 	overflow: auto;
-	background-color: #bbbbbb;
-}
-
-.PostsTableRow
-{
-	text-align: center;
+	background-color: rgba( 192, 192, 192 255 );
 }
 
 .Text
