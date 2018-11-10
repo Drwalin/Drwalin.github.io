@@ -36,19 +36,11 @@
 		
 		
 		
-		<div style="background-color:#000000;" id="MainBodyDivIdToIdentify" class="MainBody">
-			<!-- <layer>
-				<layer name=mainBackground left=0 top=0>
-					<div style="z-index:3; overflow:hidden; background-color:rgba(0,0,0,0);" class="WholeAnimationDiv"> -->
-						<a id="BackgroundAnimationSpace" class="WholeAnimationDiv"></a>
-				<!-- 	</div>
-				</layer>
-				<layer name=mainBody left=0 top=0 above=mainBackground>
-					<div style="z-index:2;top:0;"> -->
-						<a id="readMainPost"></a>
-					<!-- </div>
-				</layer>
-			</layer> -->
+		<div id="MainBodyDivIdToIdentify" class="MainBodyOuter">
+			<a id="BackgroundAnimationSpace" class="WholeAnimationDiv"></a>
+			<div style="background-color:#000000;" class="MainBody">
+					<a id="readMainPost"></a>
+			</div>
 		</div>
 		
 		
@@ -72,7 +64,7 @@
 	<script type="text/javascript">
 		InitAllPosts();
 		LoadMainPage();
-		InitAnimatedBackground( 20 );
+		InitAnimatedBackground( 25 );
 	</script>
 	
 </html>

@@ -16,6 +16,21 @@
 	overflow: auto;
 }
 
+.MainBodyOuter
+{
+    text-align: justify;
+    text-justify: inter-word;
+	/*
+	background-position: center;
+	background-image: url("../media/BGcode-blurred.jpg");
+	background-repeat: repeat-y;
+	*/
+	background-size: 100%;
+	background-color: #000000;
+	height: 87.9vh;
+	overflow: hidden;
+}
+
 .MainBodyTable
 {
 	border-collapse: collapse;

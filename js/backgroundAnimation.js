@@ -8,9 +8,10 @@ function RandomizeObject( objectId )
 	if( parentOfAnimatedObjects != null )
 	{
 		var width = parentOfAnimatedObjects.offsetWidth;
-		animatedBackgroundObjects[objectId].y = 0;
+		var height = parentOfAnimatedObjects.offsetHeight;
+		animatedBackgroundObjects[objectId].y = Math.floor( ( Math.random() * ( height * 2 / 3 ) ) - 150 );
 		animatedBackgroundObjects[objectId].x = Math.floor( ( Math.random() * ( width - 60 ) ) + 20 );
-		animatedBackgroundObjects[objectId].string = "fwafaf";
+		animatedBackgroundObjects[objectId].string = "";
 	}
 	else
 	{
@@ -20,13 +21,15 @@ function RandomizeObject( objectId )
 
 function MakeRandomAnimatedBackgroundObject( objectId )
 {
-	animatedBackgroundObjects[objectId] = { x:0, y:0, string:"fwafw", length:Math.floor( ( Math.random() * 15 ) + 10 ), id:objectId, screenObject:null };
+	animatedBackgroundObjects[objectId] = { x:0, y:0, string:"", length:Math.floor( ( Math.random() * 15 ) + 10 ), id:objectId, screenObject:null };
 	RandomizeObject( objectId );
 }
 
+var allPossibleCharactersForBackgroundAnimation = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890~!@#$%^&*()+-=[]\{}|;:/<>? ";
 function RandomSign()
 {
-	return "G";
+	//return "G";
+	return allPossibleCharactersForBackgroundAnimation.charAt( Math.floor( Math.random() * allPossibleCharactersForBackgroundAnimation.length ) );
 }
 
 function GetNameOfAnimatedObject( numId )
@@ -34,8 +37,9 @@ function GetNameOfAnimatedObject( numId )
 	return "AnimatedObjectId" + numId;
 }
 
-function UpdateAnimatedObject( objectId, animationId, parent )
+function UpdateAnimatedObjects( objectId, animationId, parent )
 {
+	//var screenObject = animatedBackgroundObjects[objectId].screenObject;
 	var screenObject = document.getElementById( GetNameOfAnimatedObject( objectId ) );
 	//var parent = document.getElementById( "MainBodyDivIdToIdentify" );
 	if( parent != null && screenObject != null )
@@ -51,7 +55,7 @@ function UpdateAnimatedObject( objectId, animationId, parent )
 		{
 			if( animatedBackgroundObjects[objectId].string.length >= animatedBackgroundObjects[objectId].length )
 			{
-				animatedBackgroundObjects[objectId].y += 20;
+				animatedBackgroundObjects[objectId].y += 25;
 				animatedBackgroundObjects[objectId].string = animatedBackgroundObjects[objectId].string.slice( 1 );
 			}
 			animatedBackgroundObjects[objectId].string += RandomSign();
@@ -61,7 +65,7 @@ function UpdateAnimatedObject( objectId, animationId, parent )
 		screenObject.style.top = animatedBackgroundObjects[objectId].y.toString() + "px";
 		screenObject.style.left = animatedBackgroundObjects[objectId].x.toString() + "px";
 		
-		var dstHtml = "";
+		var dstHtml = "<b>";
 		
 		var string = animatedBackgroundObjects[objectId].string;
 		
@@ -91,12 +95,12 @@ function UpdateAnimatedObject( objectId, animationId, parent )
 			}
 			currentColor += "00";
 			dstHtml += "<font size=3 color=" + currentColor + ">" + string.charAt(j) + "</font>";
-			//dstHtml += "<font size=3 color=#00ff00>" + string.charAt( j ) + "</font>";
 			if( j+1 < string.length )
 			{
 				dstHtml += "<br />";
 			}
 		}
+		dstHtml += "</b>";
 		
 		document.getElementById( GetNameOfAnimatedObject( objectId ) ).innerHTML = dstHtml;
 	}
@@ -139,12 +143,13 @@ function InitAnimatedBackground( numberOfAnimatedObjects )
 		animatedBackgroundObjects.forEach(
 		function( object, i, array )
 		{
+			object.screenObject = document.getElementById( GetNameOfAnimatedObject( i ) );
 			var animationSpeed = Math.floor( ( Math.random() * 80 ) + 80 );
 			var obj = animatedBackgroundObjects[i];
 			var id = setInterval(
 			function()
 			{
-				UpdateAnimatedObject( i, id, parentOfAnimatedObjects );
+				UpdateAnimatedObjects( i, id, parentOfAnimatedObjects );
 			},
 			animationSpeed );
 		}
