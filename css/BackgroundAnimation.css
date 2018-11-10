@@ -1,22 +1,18 @@
 
 .WholeAnimationDiv
 {
-	background-color: #000000;
 	left: 0px;
 	top: 0px;
-	z-index: 0;
-	position: relative;
+	position: absolute;
 	overflow: hidden;
 	width: 100vh;
 	height: 100%;
-	color: #ffffff;
+	z-index: -1;
 }
 
 .WholeAnimationDiv canvas
 {
-	z-index: 0;
 	position: absolute;
-	color: #ffffff;
 }
 
 

@@ -47,7 +47,7 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 		var width = parent.offsetWidth;
 		var height = parent.offsetHeight;
 		
-		if( animatedBackgroundObjects[objectId].y > height )
+		if( animatedBackgroundObjects[objectId].y+120 > height )
 		{
 			RandomizeObject( objectId );
 		}
@@ -81,7 +81,6 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 		var j = 0;
 		for( j = 0; j < string.length; j++ )
 		{
-			//canvasContext.clearRect( 0, j*20, screenObject.width, (j+1)*20 );
 			canvasContext.fillText( string.charAt(j), 0, (j+1)*20 );
 		}
 	}

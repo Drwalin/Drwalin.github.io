@@ -3,14 +3,7 @@
 {
     text-align: justify;
     text-justify: inter-word;
-	/*
-	background-position: center;
-	background-image: url("../media/BGcode-blurred.jpg");
-	background-repeat: repeat-y;
-	*/
-	background-size: 100%;
-	/*background-color: #bbbbbb;*/
-	background-color: rgba(0,0,0,0);
+	background-color: rgba( 0, 0, 0, 0 );
 	padding: 10px;
 	height: 90.0vh;
 	overflow: auto;
@@ -20,13 +13,7 @@
 {
     text-align: justify;
     text-justify: inter-word;
-	/*
-	background-position: center;
-	background-image: url("../media/BGcode-blurred.jpg");
-	background-repeat: repeat-y;
-	*/
-	background-size: 100%;
-	background-color: #000000;
+	background-color: rgba( 0, 0, 0, 0 );
 	height: 90.0vh;
 	overflow: hidden;
 }
@@ -83,9 +70,10 @@ pre
 
 #readMainPost
 {
-	z-index: 100;
+    background-color: rgba( 0, 0, 0, 0 );
 	left: 0px;
 	top: 0px;
+	z-index: 1;
 }
 
 .Text
