@@ -15,6 +15,7 @@
 		<script src="./js/header.js"></script>
 		<script src="./js/postChooser.js"></script>
 		<script src="./js/checkboxes.js"></script>
+		<script src="./js/getFromURL.js"></script>
 	</head>
 	
 	
@@ -64,7 +65,14 @@
 	<script type="text/javascript">
 		InitAllPosts();
 		LoadMainPage();
-		InitAnimatedBackground( 25 );
+		if( GetFromURLIsValidName("particles") >= 0 )
+		{
+			InitAnimatedBackground( parseInt( GetFromURL( "particles" ), 10 ) );
+		}
+		else
+		{
+			InitAnimatedBackground( 25 );
+		}
 	</script>
 	
 </html>
