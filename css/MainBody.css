@@ -3,13 +3,17 @@
 {
     text-align: justify;
     text-justify: inter-word;
+	/*
 	background-position: center;
-    background-image: url("../media/BGcode-blurred.jpg");
-    background-repeat: repeat-y;
+	background-image: url("../media/BGcode-blurred.jpg");
+	background-repeat: repeat-y;
+	*/
 	background-size: 100%;
-	background-color: #bbbbbb;
+	/*background-color: #bbbbbb;*/
+	background-color: rgba(0,0,0,0);
 	padding: 10px;
-	min-height: 88vh;
+	height: 87.9vh;
+	overflow: auto;
 }
 
 .MainBodyTable
@@ -58,8 +62,15 @@
 
 pre
 {
-	max-height: 70vh;
+	max-height: 60vh;
 	overflow: auto;
+}
+
+#readMainPost
+{
+	z-index: 100;
+	left: 0px;
+	top: 0px;
 }
 
 .Text

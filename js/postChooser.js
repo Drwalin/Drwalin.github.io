@@ -63,7 +63,7 @@ function GeneratePostsList()
 		{
 			if( GetCategoryCheckboxState( value.category ) == true )
 			{
-				if( drawed%3 == 0 )
+				if( drawed%1 == 0 )
 				{
 					dst += "<tr>";
 				}
@@ -82,7 +82,7 @@ function GeneratePostsList()
 				
 				dst += "</td>";
 				
-				if( drawed%3 == 2 || index+1 == array.length )
+				if( drawed%1 == 0 || index+1 == array.length )
 				{
 					dst += "</tr>";
 				}
@@ -124,8 +124,6 @@ function SetEventsForPostsAndCheckboxes()
 function PrintAllPosts()
 {
 	document.getElementById( "pageTitle" ).innerHTML = "Drwalin posts";
-	
-	allPosts.sort( ObjectsByDateComparison );
 	
 	var dst = "";
 	

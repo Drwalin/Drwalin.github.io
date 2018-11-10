@@ -1,0 +1,26 @@
+
+.WholeAnimationDiv
+{
+	color: #22dd22;
+	background-color: #000000;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 0;
+	position: relative;
+	overflow: hidden;
+	width: 100vh;
+	height: 100%;
+}
+
+.WholeAnimationDiv div
+{
+	z-index: 0;
+	position: absolute;
+	background-color: #000000;
+	font-size: 20px;
+	/*width: 20;
+	height: 100;*/
+}
+
+

@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="./css/Header.css">
 		<link rel="stylesheet" href="./css/Footer.css">
 		<link rel="stylesheet" href="./css/MainBody.css">
+		<link rel="stylesheet" href="./css/BackgroundAnimation.css">
 		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cpp&amp;skin=sons-of-obsidian"></script>
 		<script src="./js/fileRead.js"></script>
 		<script src="./js/header.js"></script>
@@ -35,10 +36,19 @@
 		
 		
 		
-		<div class="MainBody">
-		
-			<a id="readMainPost"></a>
-		
+		<div style="background-color:#000000;" id="MainBodyDivIdToIdentify" class="MainBody">
+			<!-- <layer>
+				<layer name=mainBackground left=0 top=0>
+					<div style="z-index:3; overflow:hidden; background-color:rgba(0,0,0,0);" class="WholeAnimationDiv"> -->
+						<a id="BackgroundAnimationSpace" class="WholeAnimationDiv"></a>
+				<!-- 	</div>
+				</layer>
+				<layer name=mainBody left=0 top=0 above=mainBackground>
+					<div style="z-index:2;top:0;"> -->
+						<a id="readMainPost"></a>
+					<!-- </div>
+				</layer>
+			</layer> -->
 		</div>
 		
 		
@@ -57,6 +67,12 @@
 	</body>
 	
 	<script src="./js/postsList.js"></script>
-	<script type="text/javascript">LoadMainPage();</script>
+	<script src="./js/backgroundAnimation.js"></script>
+	
+	<script type="text/javascript">
+		InitAllPosts();
+		LoadMainPage();
+		InitAnimatedBackground( 20 );
+	</script>
 	
 </html>
