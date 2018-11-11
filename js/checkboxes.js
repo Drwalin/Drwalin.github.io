@@ -68,6 +68,7 @@ function UnmarkAllCategoryCheckboxes()
 function GenerateCategoryCheckboxes()
 {
 	var dst = "";
+	dst += "<p>";
 	
 	categoryCheckBoxesList.forEach(
 		function( value, index, array )
@@ -88,7 +89,7 @@ function GenerateCategoryCheckboxes()
 	dst += "<button class=\"PostListStatusButton\" onclick=\"PrintAllPosts()\">Submit new filter</button>      ";
 	dst += "<button class=\"PostListStatusButton\" onclick=\"MarkAllCategoryCheckboxes()\">Mark all</button>      ";
 	dst += "<button class=\"PostListStatusButton\" onclick=\"UnmarkAllCategoryCheckboxes()\">Unmark all</button>      ";
-	dst += "<br />";
+	dst += "</p>";
 	
 	return dst;
 }

@@ -1,4 +1,6 @@
 
+// Header:
+
 function LoadMainPage()
 {
 	currentPageRedrawFunction = LoadMainPage;
@@ -25,4 +27,23 @@ function LoadMyProjectsPage()
 	currentPageRedrawFunction = LoadMyProjectsPage;
 	ReadFile( "./pages/projects.html", "readMainPost" );
 	document.getElementById( "pageTitle" ).innerHTML = "Drwalin's projects";
+}
+
+
+
+// Footer:
+
+function OpenFacebookFanpage()
+{
+	OpenURLInNewTab( 'https://facebook.com' );
+}
+
+function OpenTwitterFanpage()
+{
+	OpenURLInNewTab( 'https://twitter.com' );
+}
+
+function OpenGithubRepository()
+{
+	OpenURLInNewTab( 'https://github.com/DrwalinPCF' );
 }

@@ -115,6 +115,8 @@ function InitAnimatedBackground( numberOfAnimatedObjects )
 	
 	if( backgroundAnimationSpace != null )
 	{
+		globalSettingsArray["particles"] = numberOfAnimatedObjects;
+		
 		var dst = "";
 		var i;
 		

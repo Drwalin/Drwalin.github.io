@@ -14,6 +14,7 @@ function AddPost( category, name, date, description, file )
 		
 		allPosts[allPosts.length-1].event = function()
 		{
+			currentPageRedrawFunction = allPosts[allPosts.length-1].event;
 			OnPostClickEvent( allPosts[allPosts.length-1] );
 		};
 		
@@ -73,6 +74,7 @@ function GeneratePostsList()
 	var dst = "";
 	var drawed = 0;
 	
+	dst += "<p>";
 	dst += "<table class=\"TableOfPosts\">";
 	
 	allPosts.forEach(
@@ -110,6 +112,7 @@ function GeneratePostsList()
 	);
 	
 	dst += "</table>";
+	dst += "</p>";
 	
 	return dst;
 }

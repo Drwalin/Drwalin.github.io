@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title id="pageTitle">TODO: POST TITLE HERE</title>
+		<title id="pageTitle">Drwalin main page</title>
 		<link rel="stylesheet" href="./css/DefaultPostStyles.css">
 		<link rel="stylesheet" href="./css/Header.css">
 		<link rel="stylesheet" href="./css/Footer.css">
@@ -13,13 +13,14 @@
 		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cpp"></script> <!-- &amp;skin=sons-of-obsidian -->
 		<script src="http://www.quasimondo.com/StackBlurForCanvas/StackBlur.js" language="javascript"></script>
 		<script src="./js/fileRead.js"></script>
-		<script src="./js/header.js"></script>
+		<script src="./js/headerAndFooter.js"></script>
 		<script src="./js/postChooser.js"></script>
 		<script src="./js/checkboxes.js"></script>
 		<script src="./js/getFromURL.js"></script>
 		<script src="./js/cookies.js"></script>
 		<script src="./js/settingsPage.js"></script>
 		<script src="./js/onResizeEvent.js"></script>
+		<script src="./js/openURLinNewTab.js"></script>
 	</head>
 	
 	
@@ -30,9 +31,8 @@
 			<div class="mainReferencesLeft">
 				<button onclick="LoadMainPage()">Main Page</a>
 			</div>
-			<div class="mainReferencesMiddle">
-			</div>
 			<div class="mainReferencesRight">
+				<button onclick="DrawSettingsPage()">Settings</a>
 				<button onclick="LoadContactPage()">Contact me</a>
 				<button onclick="PrintAllPosts()">Posts list</a>
 				<button onclick="LoadMyProjectsPage()">My projects</a>
@@ -52,12 +52,12 @@
 		
 		<div id="container">
 			<div class="footerLeft">
-				<a href="https://facebook.com">Facebook fanpage</a>
-				<a href="https://twitter.com">Twitter  something</a>
-				<a href="https://github.com/DrwalinPCF">My github site</a>
+				<button onclick="OpenFacebookFanpage()">Facebook Fanpage</button>
+				<button onclick="OpenTwitterFanpage()">Twitter  something</button>
+				<button onclick="OpenGithubRepository()">My github repository</button>
 			</div>
 			<div class="footerRight">
-				<a>EMail: <i><u><font color="#2020d0">########@gmail.com</font></u></i><a>
+				<button>EMail: <i><u><font color="#2020d0">########@gmail.com</font></u></i><button>
 			</div>
 		</div>
 		
@@ -69,7 +69,7 @@
 	<script type="text/javascript">
 		InitAllPosts();
 		LoadMainPage();
-		InitSettings();
+		InitSettings( true );
 		SaveSettingsToCookie();
 	</script>
 	

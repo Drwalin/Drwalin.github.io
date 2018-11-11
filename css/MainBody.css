@@ -66,6 +66,23 @@
 	float: center;
 }
 
+.JustStandardButton
+{
+	text-align: left;
+	border: 1px solid black;
+	background-color: #cccccc;
+	color: #000000;
+	padding: 10px;
+	margin: 5px 5px;
+	font-size: 15px;
+}
+
+.JustStandardButton:hover
+{
+	background-color: #808080;
+	color: #ffffff;
+}
+
 pre
 {
 	float: center;

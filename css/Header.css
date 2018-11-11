@@ -1,5 +1,5 @@
 
-.mainReferencesLeft, .mainReferencesMiddle, .mainReferencesRight
+.mainReferencesLeft, .mainReferencesRight
 {
 	height: 7.0vh;
 	overflow: hidden;
@@ -11,12 +11,6 @@
 .mainReferencesLeft
 {
 	width: 30%;
-}
-
-.mainReferencesMiddle
-{
-	width: 0%;
-	text-align: center;
 }
 
 .mainReferencesRight
@@ -32,6 +26,7 @@
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 
+	height: 7.0vh;
 	border: 0px solid black;
 	background-color: #333;
 	display: block;

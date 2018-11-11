@@ -6,14 +6,61 @@ var currentPageRedrawFunction = LoadMainPage;
 /*
 	all settings:
 		particles - amount of background particles
+		particlesBlur -true or false to blurr particles
 */
 
-function InitSettings()
+function UseAndSaveSettings()
+{
+	globalSettingsArray["particles"] = Math.max( parseInt( document.getElementById( "settingsInputParticlesNumber" ).value, 10 ), 0 );
+	SaveSettingsToCookie();
+	InitSettings( false );
+}
+
+function GenerateSettingsMenu()
+{
+	var ret = "";
+	
+	ret += "<table style='background-color:#dddddd;'>";
+	
+	ret += "<tr style='border: 1px solid #000000;'>";
+	ret += "<td>";
+	ret += "Number of particles ";
+	ret += "</td>";
+	ret += "<td>";
+	ret += "<input id='settingsInputParticlesNumber' type='number' min='0' value='" + globalSettingsArray["particles"] + "'>";
+	ret += "</td>";
+	ret += "</tr>";
+	
+	ret += "</table>";
+	
+	ret += "<button onclick='UseAndSaveSettings()'>Submit changes</buton>";
+	
+	return ret;
+}
+
+function DrawSettingsPage()
+{
+	currentPageRedrawFunction = DrawSettingsPage;
+	
+	document.getElementById( "pageTitle" ).innerHTML = "Settings";
+	
+	var dst = "";
+	
+	dst += GenerateSettingsMenu();
+	
+	document.getElementById( "readMainPost" ).innerHTML = dst;
+}
+
+function InitSettings( useLinkConfiguration )
 {
 	if( true )
 	{
 		var particles = GetCookie("settingsParticles");
-		if( GetFromURLIsValidName("particles") >= 0 )
+		if( typeof globalSettingsArray["particles"] != "undefined" )
+		{
+			InitAnimatedBackground( globalSettingsArray["particles"] );
+		}
+		else if( useLinkConfiguration && GetFromURLIsValidName("particles") >= 0 )
 		{
 			InitAnimatedBackground( parseInt( GetFromURL( "particles" ), 10 ) );
 		}
@@ -24,13 +71,18 @@ function InitSettings()
 		else
 		{
 			InitAnimatedBackground( 50 );
+			globalSettingsArray["particles"] = 50;
 		}
 	}
 	
 	if( true )
 	{
 		var particlesBlur = GetCookie("settingsParticlesBlur");
-		if( GetFromURLIsValidName("particlesBlur") >= 0 )
+		if( typeof globalSettingsArray["particlesBlur"] != "undefined" )
+		{
+			particlesBlur = globalSettingsArray["particlesBlur"].toString();
+		}
+		else if( useLinkConfiguration && GetFromURLIsValidName("particlesBlur") >= 0 )
 		{
 			particlesBlur = GetFromURL( "particlesBlur" );
 		}
@@ -52,6 +104,6 @@ function InitSettings()
 
 function SaveSettingsToCookie()
 {
-	SetCookie( "settingsParticles", animatedBackgroundObjects.length.toString(), 311 );
+	SetCookie( "settingsParticles", globalSettingsArray["particles"].toString(), 311 );
 	SetCookie( "settingsParticlesBlur", globalSettingsArray["particlesBlur"].toString(), 311 );
 }
