@@ -53,6 +53,23 @@ function MyCustomDateToString( date )
 
 function GeneratePostsList()
 {
+	var elementsInARow = 3;
+	var mainBody = document.getElementById("MainBodyDivIdToIdentify");
+	
+	if( mainBody.offsetWidth > 1200 )
+	{
+		elementsInARow = 3;
+	}
+	else if( mainBody.offsetWidth > 800 )
+	{
+		elementsInARow = 2;
+	}
+	else
+	{
+		elementsInARow = 1;
+	}
+		
+	
 	var dst = "";
 	var drawed = 0;
 	
@@ -63,7 +80,7 @@ function GeneratePostsList()
 		{
 			if( GetCategoryCheckboxState( value.category ) == true )
 			{
-				if( drawed%3 == 0 )
+				if( drawed%elementsInARow == 0 )
 				{
 					dst += "<tr>";
 				}
@@ -82,7 +99,7 @@ function GeneratePostsList()
 				
 				dst += "</td>";
 				
-				if( drawed%3 == 2 || index+1 == array.length )
+				if( drawed%elementsInARow == (elementsInARow-1) || index+1 == array.length )
 				{
 					dst += "</tr>";
 				}

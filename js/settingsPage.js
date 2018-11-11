@@ -3,12 +3,16 @@ var globalSettingsArray = [];
 
 
 
+/*
+	all settings:
+		particles - amount of background particles
+*/
 
 function InitSettings()
 {
 	if( true )
 	{
-		var particles = GetCookie("particles");
+		var particles = GetCookie("settingsParticles");
 		if( GetFromURLIsValidName("particles") >= 0 )
 		{
 			InitAnimatedBackground( parseInt( GetFromURL( "particles" ), 10 ) );
@@ -23,10 +27,31 @@ function InitSettings()
 		}
 	}
 	
-	alert( "Settings inited" );
+	if( true )
+	{
+		var particlesBlur = GetCookie("settingsParticlesBlur");
+		if( GetFromURLIsValidName("particlesBlur") >= 0 )
+		{
+			particlesBlur = GetFromURL( "particlesBlur" );
+		}
+		else if( particlesBlur.length <= 0 )
+		{
+			particlesBlur = "1";
+		}
+		
+		if( particlesBlur == "0" || particlesBlur.toLowerCase() == "false" )
+		{
+			globalSettingsArray["particlesBlur"] = false;
+		}
+		else
+		{
+			globalSettingsArray["particlesBlur"] = true;
+		}
+	}
 }
 
 function SaveSettingsToCookie()
 {
-	SetCookie( "particles", animatedBackgroundObjects.length.toString(), 311 );
+	SetCookie( "settingsParticles", animatedBackgroundObjects.length.toString(), 311 );
+	SetCookie( "settingsParticlesBlur", globalSettingsArray["particlesBlur"].toString(), 311 );
 }

@@ -67,8 +67,8 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 		var string = animatedBackgroundObjects[objectId].string;
 		
 		
-		screenObject.width = 20;
-		screenObject.height = string.length * 20;
+		screenObject.width = 20 + 10;
+		screenObject.height = ( string.length * 20 ) + 10;
 		
 		var grd = canvasContext.createLinearGradient( 0, 0, 0, animatedBackgroundObjects[objectId].length * 20 );
 		grd.addColorStop( 0, "black" );
@@ -81,7 +81,12 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 		var j = 0;
 		for( j = 0; j < string.length; j++ )
 		{
-			canvasContext.fillText( string.charAt(j), 0, (j+1)*20 );
+			canvasContext.fillText( string.charAt(j), 5, (j+1)*20 + 5 );
+		}
+		
+		if( globalSettingsArray["particlesBlur"] )
+		{
+			stackBlurCanvasRGBA( GetNameOfAnimatedObject( objectId ), 0, 0, screenObject.width, screenObject.height, 3 );
 		}
 	}
 	else

@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="./css/MainBody.css">
 		<link rel="stylesheet" href="./css/BackgroundAnimation.css">
 		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cpp"></script> <!-- &amp;skin=sons-of-obsidian -->
+		<script src="http://www.quasimondo.com/StackBlurForCanvas/StackBlur.js" language="javascript"></script>
 		<script src="./js/fileRead.js"></script>
 		<script src="./js/header.js"></script>
 		<script src="./js/postChooser.js"></script>
@@ -18,11 +19,12 @@
 		<script src="./js/getFromURL.js"></script>
 		<script src="./js/cookies.js"></script>
 		<script src="./js/settingsPage.js"></script>
+		<script src="./js/onResizeEvent.js"></script>
 	</head>
 	
 	
 	
-	<body>
+	<body onresize="OnResizeEvent()">
 		
 		<div id="container">
 			<div class="mainReferencesLeft">

@@ -81,7 +81,6 @@ function SetCookie( cname, srccvalue, exdays )
     d.setTime( d.getTime() + ( exdays * 24*60*60*1000 ) );
     var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	alert( "Cookie: " + cname + " seted to " + srccvalue );
 }
 
 function GetCookie( cname )
@@ -99,10 +98,8 @@ function GetCookie( cname )
         if( c.indexOf(name) == 0 )
 		{
 			var ret = DecodeString( c.substring( name.length, c.length ) );
-			alert( "Cookie: " + cname + "=" + ret );
 			return ret;
         }
     }
-	alert( "Can not find cookie: " + cname );
     return "";
 }

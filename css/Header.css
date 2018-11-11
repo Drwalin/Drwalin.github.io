@@ -14,13 +14,13 @@
 
 .mainReferencesMiddle
 {
-	width: 40%;
+	width: 0%;
 	text-align: center;
 }
 
 .mainReferencesRight
 {
-	width: 30%;
+	width: 70%;
 }
 
 .mainReferencesLeft button, .mainReferencesRight button

@@ -24,7 +24,8 @@
 {
 	border-collapse: collapse;
     background-color: #ffffff;
-	width: 90%;
+	width: 80%;
+	float: center;
 }
 
 .MainBodyTable td
@@ -66,7 +67,8 @@
 
 pre
 {
-	width: 90%;
+	float: center;
+	width: 80%;
     background-color: #ffffff;
 	max-height: 60vh;
 	overflow: auto;
