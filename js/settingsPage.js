@@ -59,23 +59,28 @@ function DrawSettingsPage()
 
 function InitSettings( useLinkConfiguration )
 {
+	alert( "a" );
 	if( true )
 	{
 		var particles = GetCookie("settingsParticles");
 		if( typeof globalSettingsArray["particles"] != "undefined" )
 		{
+	alert( "b" );
 			InitAnimatedBackground( globalSettingsArray["particles"] );
 		}
 		else if( useLinkConfiguration && GetFromURLIsValidName("particles") >= 0 )
 		{
+	alert( "c" );
 			InitAnimatedBackground( parseInt( GetFromURL( "particles" ), 10 ) );
 		}
 		else if( particles.length > 0 )
 		{
+	alert( "d" );
 			InitAnimatedBackground( parseInt( particles, 10 ) );
 		}
 		else
 		{
+	alert( "e" );
 			InitAnimatedBackground( 50 );
 			globalSettingsArray["particles"] = 50;
 		}
@@ -96,6 +101,7 @@ function InitSettings( useLinkConfiguration )
 			globalSettingsArray["particlesBlur"] = true;
 		}
 	}
+	alert( "f" );
 }
 
 function SaveSettingsToCookie()
