@@ -34,7 +34,8 @@ function GetNextSignFromSource()
 	{
 		return forAnimationSourceCodeString.charAt( currentSign );
 		currentSign++;
-		currentSign %= forAnimationSourceCodeString.length;
+		if( currentSign >= forAnimationSourceCodeString.length )
+			currentSign = 0;
 	}
 	return allPossibleCharactersForBackgroundAnimation.charAt( Math.floor( Math.random() * allPossibleCharactersForBackgroundAnimation.length ) );
 }
