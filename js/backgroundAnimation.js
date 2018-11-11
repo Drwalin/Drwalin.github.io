@@ -38,12 +38,11 @@ function GetNextSignFromSource()
 			currentSign = 0;
 		return ret;
 	}
-	return allPossibleCharactersForBackgroundAnimation.charAt( Math.floor( Math.random() * allPossibleCharactersForBackgroundAnimation.length ) );
+	return RandomSign();
 }
 function RandomSign()
 {
-	return GetNextSignFromSource();
-	//return allPossibleCharactersForBackgroundAnimation.charAt( Math.floor( Math.random() * allPossibleCharactersForBackgroundAnimation.length ) );
+	return allPossibleCharactersForBackgroundAnimation.charAt( Math.floor( Math.random() * allPossibleCharactersForBackgroundAnimation.length ) );
 }
 
 function GetNameOfAnimatedObject( numId )
