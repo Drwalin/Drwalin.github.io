@@ -100,6 +100,7 @@ function InitSettings( useLinkConfiguration )
 
 function SaveSettingsToCookie()
 {
+	alert( globalSettingsArray["particlesBlur"].toString() );
 	SetCookie( "settingsParticles", globalSettingsArray["particles"].toString(), 311 );
 	SetCookie( "settingsParticlesBlur", globalSettingsArray["particlesBlur"].toString(), 311 );
 }
