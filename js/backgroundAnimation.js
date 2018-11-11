@@ -123,7 +123,7 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 
 function InitAnimatedBackground( numberOfAnimatedObjects )
 {
-	ReadFileCustomFinish( "./js/backgroundAnimation.js", function(string){forAnimationSourceCodeString=string;} );
+	ReadFileCustomFinish( "./posts/post.html", function(string){forAnimationSourceCodeString=string;} );
 	var backgroundAnimationSpace = document.getElementById( "BackgroundAnimationSpace" );
 	
 	if( backgroundAnimationSpace != null )
