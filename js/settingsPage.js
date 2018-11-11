@@ -12,6 +12,7 @@ var currentPageRedrawFunction = LoadMainPage;
 function UseAndSaveSettings()
 {
 	globalSettingsArray["particles"] = Math.max( parseInt( document.getElementById( "settingsInputParticlesNumber" ).value, 10 ), 0 );
+	globalSettingsArray["particlesBlur"] = document.getElementById( "settingsInputParticlesBlur" ).checked;
 	SaveSettingsToCookie();
 	InitSettings( false );
 }
@@ -23,13 +24,14 @@ function GenerateSettingsMenu()
 	ret += "<p>";
 	ret += "<table class=\"SettingsTable\">";
 	
-	ret += "<tr'>";
-	ret += "<td>";
-	ret += "Number of particles ";
-	ret += "</td>";
-	ret += "<td>";
-	ret += "<input id='settingsInputParticlesNumber' type='number' min='0' value='" + globalSettingsArray["particles"] + "'>";
-	ret += "</td>";
+	ret += "<tr>";
+	ret += "<td>Number of particles</td>";
+	ret += "<td><input id='settingsInputParticlesNumber' type='number' min='0' value='" + globalSettingsArray["particles"] + "'></td>";
+	ret += "</tr>";
+	
+	ret += "<tr>";
+	ret += "<td>Use blur for particles</td>";
+	ret += "<td><input id='settingsInputParticlesBlur' type='checkbox' " + ( globalSettingsArray["particlesBlur"] ? "checked='true'" : "" ) + "'></td>";
 	ret += "</tr>";
 	
 	ret += "</table>";
@@ -83,22 +85,12 @@ function InitSettings( useLinkConfiguration )
 		var particlesBlur = GetCookie("settingsParticlesBlur");
 		if( typeof globalSettingsArray["particlesBlur"] != "undefined" )
 		{
-			particlesBlur = globalSettingsArray["particlesBlur"].toString();
 		}
 		else if( useLinkConfiguration && GetFromURLIsValidName("particlesBlur") >= 0 )
 		{
-			particlesBlur = GetFromURL( "particlesBlur" );
+			globalSettingsArray["particlesBlur"] = StringToBoolean( GetFromURL( "particlesBlur" ) );
 		}
 		else if( particlesBlur.length <= 0 )
-		{
-			particlesBlur = "1";
-		}
-		
-		if( particlesBlur == "0" || particlesBlur.toLowerCase() == "false" )
-		{
-			globalSettingsArray["particlesBlur"] = false;
-		}
-		else
 		{
 			globalSettingsArray["particlesBlur"] = true;
 		}
