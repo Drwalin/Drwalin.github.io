@@ -84,7 +84,7 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 		
 		var grd = canvasContext.createLinearGradient( 0, 0, 0, animatedBackgroundObjects[objectId].length * 20 );
 		grd.addColorStop( 0, "black" );
-		grd.addColorStop( 1, "#00d000" );
+		grd.addColorStop( 1, "#00ff00" );
 		canvasContext.fillStyle = grd;
 		canvasContext.font = "20px monospace";
 		
