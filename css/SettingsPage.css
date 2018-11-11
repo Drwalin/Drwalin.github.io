@@ -1,0 +1,56 @@
+
+.SettingsTable
+{
+	float: center;
+	text-align: left;
+	background-color: #dddddd;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.SettingsTable tr
+{
+	padding: 1px;
+	border: 1px solid #303030;
+}
+
+.SettingsTable tr td
+{
+	text-align: left;
+	padding: 10px;
+	border: 1px solid #303030;
+	font-size: 20px;
+}
+
+.SettingsTable tr th
+{
+	text-align: center;
+	font-size: 24px;
+	padding: 10px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.SettingsButton
+{
+	float: center;
+	text-align: left;
+	background-color: #dddddd;
+	padding: 10px;
+	font-size: 20px;
+    margin-left: auto; 
+    margin-right: auto;
+	color: #000000;
+}
+
+.SettingsButton:hover
+{
+	background-color: #555555;
+	color: #dddddd;
+}
+
+.SettingsButton:click
+{
+	background-color: #aaaaaa;
+	color: #000000;
+}
