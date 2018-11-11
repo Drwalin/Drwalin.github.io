@@ -22,6 +22,15 @@
 	font-size: 20px;
 }
 
+.SettingsTable tr th
+{
+	text-align: center;
+	font-size: 24px;
+	padding: 10px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
 .SettingsButton
 {
 	float: center;

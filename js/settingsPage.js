@@ -24,18 +24,19 @@ function GenerateSettingsMenu()
 	ret += "<p>";
 	ret += "<table class=\"SettingsTable\">";
 	
-	ret += "<tr>";
-	ret += "<td>Number of particles</td>";
-	ret += "<td><input id='settingsInputParticlesNumber' type='number' min='0' value='" + globalSettingsArray["particles"] + "'></td>";
-	ret += "</tr>";
-	
-	ret += "<tr>";
-	ret += "<td>Use blur for particles</td>";
-	ret += "<td><input id='settingsInputParticlesBlur' type='checkbox' " + ( globalSettingsArray["particlesBlur"] ? "checked='true'" : "" ) + "'></td>";
-	ret += "</tr>";
-	
+		ret += "<tr>";
+			ret += "<th colspan='2'>Background properties</th>";
+		ret += "</tr>";
+		ret += "<tr>";
+			ret += "<td>Number of particles</td>";
+			ret += "<td><input id='settingsInputParticlesNumber' type='number' min='0' value='" + globalSettingsArray["particles"] + "'></td>";
+		ret += "</tr>";
+		ret += "<tr>";
+			ret += "<td>Use blur for particles</td>";
+			ret += "<td><input id='settingsInputParticlesBlur' type='checkbox' " + ( globalSettingsArray["particlesBlur"] ? "checked='true'" : "" ) + "'></td>";
+		ret += "</tr>";
+		
 	ret += "</table>";
-	
 	ret += "</p>";
 	
 	ret += "<button onclick='UseAndSaveSettings()' class='SettingsButton'>Submit changes</buton>";

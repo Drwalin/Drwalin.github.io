@@ -4,7 +4,6 @@ var parentOfAnimatedObjects = document.getElementById( "MainBodyDivIdToIdentify"
 
 function RandomizeObject( objectId )
 {
-	//var parent = document.getElementById( "MainBodyDivIdToIdentify" );
 	if( parentOfAnimatedObjects != null )
 	{
 		var width = parentOfAnimatedObjects.offsetWidth;
@@ -27,10 +26,22 @@ function MakeRandomAnimatedBackgroundObject( objectId )
 }
 
 var allPossibleCharactersForBackgroundAnimation = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890~!@#$%^&*()+-=[]\{}|;:/<>? ";
+var forAnimationSourceCodeString = "";
+var currentSign = 0;
+function GetNextSignFromSource()
+{
+	if( forAnimationSourceCodeString.length > 0 )
+	{
+		return forAnimationSourceCodeString.charAt( currentSign );
+		currentSign++;
+		currentSign %= forAnimationSourceCodeString.length;
+	}
+	return allPossibleCharactersForBackgroundAnimation.charAt( Math.floor( Math.random() * allPossibleCharactersForBackgroundAnimation.length ) );
+}
 function RandomSign()
 {
-	//return "G";
-	return allPossibleCharactersForBackgroundAnimation.charAt( Math.floor( Math.random() * allPossibleCharactersForBackgroundAnimation.length ) );
+	return GetNextSignFromSource();
+	//return allPossibleCharactersForBackgroundAnimation.charAt( Math.floor( Math.random() * allPossibleCharactersForBackgroundAnimation.length ) );
 }
 
 function GetNameOfAnimatedObject( numId )
@@ -47,7 +58,7 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 		var width = parent.offsetWidth;
 		var height = parent.offsetHeight;
 		
-		if( animatedBackgroundObjects[objectId].y+120 > height )
+		if( animatedBackgroundObjects[objectId].y+(animatedBackgroundObjects[objectId].length/2) > height )
 		{
 			RandomizeObject( objectId );
 		}
@@ -111,6 +122,7 @@ function UpdateAnimatedObjects( objectId, animationId, parent )
 
 function InitAnimatedBackground( numberOfAnimatedObjects )
 {
+	ReadFileCustomFinish( "./js/backgroundAnimation.js", function(string){forAnimationSourceCodeString=string;} );
 	var backgroundAnimationSpace = document.getElementById( "BackgroundAnimationSpace" );
 	
 	if( backgroundAnimationSpace != null )
