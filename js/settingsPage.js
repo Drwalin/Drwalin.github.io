@@ -100,6 +100,10 @@ function InitSettings( useLinkConfiguration )
 		{
 			globalSettingsArray["particlesBlur"] = true;
 		}
+		else
+		{
+			globalSettingsArray["particlesBlur"] = StringToBoolean( particlesBlur );
+		}
 	}
 	alert( "f" );
 }
