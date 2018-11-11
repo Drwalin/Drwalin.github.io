@@ -32,10 +32,11 @@ function GetNextSignFromSource()
 {
 	if( forAnimationSourceCodeString.length > 0 )
 	{
-		return forAnimationSourceCodeString.charAt( currentSign );
+		var ret = forAnimationSourceCodeString.charAt( currentSign );
 		currentSign++;
 		if( currentSign >= forAnimationSourceCodeString.length )
 			currentSign = 0;
+		return ret;
 	}
 	return allPossibleCharactersForBackgroundAnimation.charAt( Math.floor( Math.random() * allPossibleCharactersForBackgroundAnimation.length ) );
 }
