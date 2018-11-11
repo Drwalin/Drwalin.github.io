@@ -67,15 +67,7 @@
 	<script type="text/javascript">
 		InitAllPosts();
 		LoadMainPage();
-		InitSettingsFromCookies();
-		if( GetFromURLIsValidName("particles") >= 0 )
-		{
-			InitAnimatedBackground( parseInt( GetFromURL( "particles" ), 10 ) );
-		}
-		else
-		{
-			InitAnimatedBackground( 50 );
-		}
+		InitSettings();
 		SaveSettingsToCookie();
 	</script>
 	

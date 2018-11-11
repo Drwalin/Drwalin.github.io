@@ -12,7 +12,7 @@ function RandomizeObject( objectId )
 		animatedBackgroundObjects[objectId].y = Math.floor( ( Math.random() * ( height * 2 / 3 ) ) - 150 );
 		animatedBackgroundObjects[objectId].x = Math.floor( ( Math.random() * ( width - 60 ) ) + 20 );
 		animatedBackgroundObjects[objectId].string = "";
-		animatedBackgroundObjects[objectId].length = Math.floor( ( Math.random() * 15 ) + 10 );
+		animatedBackgroundObjects[objectId].length = Math.floor( ( Math.random() * 25 ) + 3 );
 	}
 	else
 	{
@@ -142,7 +142,7 @@ function InitAnimatedBackground( numberOfAnimatedObjects )
 			object.canvasObject = document.getElementById( GetNameOfAnimatedObject( i ) );
 			object.canvasContext = object.canvasObject.getContext("2d");
 			
-			var animationSpeed = Math.floor( ( Math.random() * 60 ) + 60 );
+			var animationSpeed = Math.floor( ( Math.random() * 40 ) + 40 );
 			var obj = animatedBackgroundObjects[i];
 			var id = setInterval(
 			function()
