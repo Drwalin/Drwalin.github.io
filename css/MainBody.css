@@ -5,9 +5,10 @@
     text-justify: inter-word;
 	background-color: rgba( 0, 0, 0, 0 );
 	padding: 10px;
-	height: 90.0vh;
+	height: 86.0vh;
 	overflow: auto;
 	background-size: 100%;
+	text-align: center;
 }
 
 .MainBodyOuter
@@ -15,7 +16,7 @@
     text-align: justify;
     text-justify: inter-word;
 	background-color: rgba( 0, 0, 0, 0 );
-	height: 90.0vh;
+	height: 86.0vh;
 	overflow: hidden;
 	background-size: 100%;
 }
@@ -24,7 +25,7 @@
 {
 	border-collapse: collapse;
     background-color: #ffffff;
-	width: 80%;
+	width: 70%;
 	float: center;
 }
 
@@ -68,7 +69,7 @@
 pre
 {
 	float: center;
-	width: 80%;
+	width: 70%;
     background-color: #ffffff;
 	max-height: 60vh;
 	overflow: auto;

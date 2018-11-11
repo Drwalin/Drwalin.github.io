@@ -1,5 +1,5 @@
 
 function OnResizeEvent()
 {
-	PrintAllPosts();
+	currentPageRedrawFunction();
 }

@@ -140,6 +140,8 @@ function SetEventsForPostsAndCheckboxes()
 
 function PrintAllPosts()
 {
+	currentPageRedrawFunction = PrintAllPosts;
+	
 	document.getElementById( "pageTitle" ).innerHTML = "Drwalin posts";
 	
 	var dst = "";

@@ -1,7 +1,7 @@
 
 var globalSettingsArray = [];
 
-
+var currentPageRedrawFunction = LoadMainPage;
 
 /*
 	all settings:

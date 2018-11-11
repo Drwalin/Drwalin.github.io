@@ -1,9 +1,10 @@
 
 .mainReferencesLeft, .mainReferencesMiddle, .mainReferencesRight
 {
+	height: 7.0vh;
 	overflow: hidden;
 	background-color: #333;
-	font-size: 16px;
+	font-size: 20px;
 	border-color: #333;
 }
 
@@ -25,6 +26,12 @@
 
 .mainReferencesLeft button, .mainReferencesRight button
 {
+    position: relative;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+
 	border: 0px solid black;
 	background-color: #333;
 	display: block;
@@ -32,13 +39,14 @@
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
-	font-size: 16px;
+	font-size: 20px;
 }
 
 .mainReferencesLeft button:hover, .mainReferencesRight button:hover
 {
 	background-color: #ddd;
 	color: black;
+	border-color: #ddd;
 }
 
 .mainReferencesLeft button
