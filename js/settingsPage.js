@@ -20,9 +20,10 @@ function GenerateSettingsMenu()
 {
 	var ret = "";
 	
-	ret += "<table style='background-color:#dddddd;'>";
+	ret += "<p>";
+	ret += "<table class=\"SettingsTable\">";
 	
-	ret += "<tr style='border: 1px solid #000000;'>";
+	ret += "<tr'>";
 	ret += "<td>";
 	ret += "Number of particles ";
 	ret += "</td>";
@@ -33,7 +34,9 @@ function GenerateSettingsMenu()
 	
 	ret += "</table>";
 	
-	ret += "<button onclick='UseAndSaveSettings()'>Submit changes</buton>";
+	ret += "</p>";
+	
+	ret += "<button onclick='UseAndSaveSettings()' class='SettingsButton'>Submit changes</buton>";
 	
 	return ret;
 }
