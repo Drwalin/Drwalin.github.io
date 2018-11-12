@@ -29,6 +29,8 @@
 	border-collapse: collapse;
     background-color: #ffffff;
 	width: 70%;
+    margin-left: auto; 
+    margin-right: auto;
 	float: center;
 }
 
@@ -98,9 +100,14 @@ pre
 #readMainPost
 {
     background-color: rgba( 0, 0, 0, 0 );
+	/*
 	left: 0px;
 	top: 0px;
+	*/
 	z-index: 1;
+    margin-left: auto; 
+    margin-right: auto;
+	float: center;
 }
 
 .Text
