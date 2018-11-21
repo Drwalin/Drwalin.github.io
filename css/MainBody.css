@@ -9,8 +9,9 @@
 	overflow: auto;
 	background-size: 100%;
 	text-align: center;
-    margin-left: auto; 
-    margin-right: auto;
+	
+	margin-left: auto; 
+	margin-right: auto;
 	float: center;
 }
 
@@ -29,8 +30,9 @@
 	border-collapse: collapse;
     background-color: #ffffff;
 	width: 70%;
-    margin-left: auto; 
-    margin-right: auto;
+	
+	margin-left: auto; 
+	margin-right: auto;
 	float: center;
 }
 
@@ -55,8 +57,9 @@
 
 .TableOfPosts
 {
-    margin-left: auto; 
-    margin-right: auto;
+	margin-left: auto; 
+	margin-right: auto;
+	
 	text-align: center;
 	padding: 0px;
 	border-collapse: collapse;
@@ -90,21 +93,30 @@
 
 pre
 {
-	float: center;
 	width: 70%;
     background-color: #ffffff;
 	max-height: 60vh;
 	overflow: auto;
+	/*
+    margin-left: auto; 
+    margin-right: auto;
+	float: center;
+	*/
 }
 
 #readMainPost
 {
     background-color: rgba( 0, 0, 0, 0 );
-	/*
-	left: 0px;
-	top: 0px;
-	*/
 	z-index: 1;
+	
+	margin-left: auto; 
+	margin-right: auto;
+	float: center;
+	
+}
+
+#readMainPost p
+{
     margin-left: auto; 
     margin-right: auto;
 	float: center;

@@ -147,11 +147,13 @@ function PrintAllPosts()
 	
 	document.getElementById( "pageTitle" ).innerHTML = "Drwalin posts";
 	
-	var dst = "";
+	var dst = "<p>";
 	
 	dst += GenerateCategoryCheckboxes();
 	
 	dst += GeneratePostsList();
+	
+	dst += "</p>";
 	
 	document.getElementById( "readMainPost" ).innerHTML = dst;
 	

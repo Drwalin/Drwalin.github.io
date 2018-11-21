@@ -37,9 +37,10 @@ function GenerateSettingsMenu()
 		ret += "</tr>";
 		
 	ret += "</table>";
-	ret += "</p>";
 	
-	ret += "<button onclick='UseAndSaveSettings()' class='SettingsButton'>Submit changes</buton>";
+	ret += "<br /><button onclick='UseAndSaveSettings()' class='SettingsButton'>Submit changes</buton>";
+	
+	ret += "</p>";
 	
 	return ret;
 }
@@ -50,9 +51,11 @@ function DrawSettingsPage()
 	
 	document.getElementById( "pageTitle" ).innerHTML = "Settings";
 	
-	var dst = "";
+	var dst = "<p>";
 	
 	dst += GenerateSettingsMenu();
+	
+	dst += "</p>";
 	
 	document.getElementById( "readMainPost" ).innerHTML = dst;
 }
