@@ -38,11 +38,8 @@ function OnPostClickEvent( postData )
 {
 	ReadFile( "./posts/" + postData.file, "readMainPost" );
 	document.getElementById( "pageTitle" ).innerHTML = postData.name;
-	console.log( "Before sleep" );
-	sleep( 500 );
-	console.log( "After sleep" );
+	sleep( 1000 );
 	hljs.initHighlighting();
-	console.log( "After code highlighing" );
 }
 
 function ObjectsByDateComparison( a, b )
