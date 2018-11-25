@@ -39,6 +39,7 @@ function OnPostClickEvent( postData )
 	ReadFile( "./posts/" + postData.file, "readMainPost" );
 	document.getElementById( "pageTitle" ).innerHTML = postData.name;
 	hljs.initHighlighting();
+	alert( "Does it work???" );
 }
 
 function ObjectsByDateComparison( a, b )
