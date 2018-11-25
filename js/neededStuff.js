@@ -12,4 +12,8 @@ function StringToBoolean( str )
 	return false;
 }
 
+function sleep( ms )
+{
+	await new Promise( resolve => setTimeout( resolve, ms ) );
+}
 
