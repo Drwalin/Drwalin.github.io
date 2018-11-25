@@ -121,6 +121,11 @@ pre
 	float: center;
 }
 
+#readMainPost p pre
+{
+	background-color: #a0a0a0;
+}
+
 .Text
 {
 	font-size: 15px;
